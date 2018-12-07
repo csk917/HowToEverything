@@ -1,0 +1,257 @@
+//1 Event Intro
+
+ <script>
+        window.onload = function () { //이벤트 handler
+            // 변수를 선언합니다.
+            var header = document.getElementById('header');
+            // 이벤트를 연결합니다.
+            function whenClick() { alert('CLICK'); }
+            header.onclick = whenClick;
+        };
+    </script>
+    
+    
+//2 Click event
+
+<script>
+        window.onload = function () {
+            document.getElementById('header').onclick = function () {
+                alert(this);
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1 id="header">Click</h1>
+</body>
+
+
+//3 Event 1회성
+ <script>
+        window.onload = function () {
+            // 변수를 선언합니다.
+            var header = document.getElementById('header');
+            // 이벤트를 연결합니다.
+            header.onclick = function () {
+                alert('클릭');
+                // 이벤트를 제거합니다. 한번만 뜨기
+                header.onclick = null;
+            };
+        };
+    </script>
+</head>
+<body>
+ <h1 id="header">Click</h1>
+</body>
+
+
+//3 Event 스타일 바꾸기
+ <script>
+        window.onload = function () {
+            document.getElementById('header').onclick = function () {
+                this.style.color = 'Orange';
+                this.style.backgroundColor = 'Red';
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1 id="header">Click</h1>
+</body>
+
+
+//4 Event 정보 뽑기
+ <script>
+        window.onload = function () {
+            document.body.onclick = function (e) {
+                // 이벤트 객체를 설정합니다.
+                var event = e || window.event; //여기 있는 걸 for문으로 전부 출력. 이벤트 정보
+                document.body.innerHTML = '';
+                for (var key in event) {
+                    document.body.innerHTML += '<p>' + key + ': ' + event[key] + '</p>';
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1 id="header">Click</h1>
+</body>
+
+
+//5 버튼으로 숫자 늘리기
+ <script>
+        window.onload = function () {
+            // 문서 객체를 가져옵니다.
+            var buttonA = document.getElementById('button_a');
+            var buttonB = document.getElementById('button_b');
+            var counterA = document.getElementById('counter_a');
+            var counterB = document.getElementById('counter_b');
+
+            // 이벤트를 연결합니다.
+            buttonA.onclick = function () {
+                counterA.innerHTML = Number(counterA.innerHTML) + 1;
+            };
+            buttonB.onclick = function () {
+                counterB.innerHTML = Number(counterB.innerHTML) + 1;
+            };
+        };
+</script>
+</head>
+<body>
+    <button id="button_a">ButtonA</button>
+    <button id="button_b">ButtonB</button>
+    <h1>Button A - <span id="counter_a">0</span></h1>
+    <h1>Button B - <span id="counter_b">0</span></h1>
+</body>
+
+
+//6 버튼 변형 
+
+<script>
+        window.onload = function () {
+            // 문서 객체를 가져옵니다.
+            var buttonA = document.getElementById('button_a');
+            var buttonB = document.getElementById('button_b');
+            var counterA = document.getElementById('counter_a');
+            var counterB = document.getElementById('counter_b');
+
+            // 이벤트를 연결합니다.
+            buttonA.onclick = function () {
+                counterA.innerHTML = Number(counterA.innerHTML) + 1;
+            };
+            buttonB.onclick = function () {
+                counterB.innerHTML = Number(counterB.innerHTML) + 1;
+                counterA.innerHTML = Number(counterA.innerHTML) + 1; // || buttonA.onclick(); 으로도 처리 가능
+            };
+        };
+</script>
+</head>
+<body>
+    <button id="button_a">ButtonA</button>
+    <button id="button_b">ButtonB</button>
+    <h1>Button A - <span id="counter_a">0</span></h1>
+    <h1>Button B - <span id="counter_b">0</span></h1>
+</body>
+
+
+//7 태그안에 onclick Event
+<body>
+    <h1 onclick="alert('클릭')">Click</h1>
+</body>
+
+
+//8 Form Tag Submit (window.onload --> .onsubmit)
+
+<script>
+        window.onload = function () {
+            // 이벤트를 연결합니다.
+            document.getElementById('my_form').onsubmit = function () {
+                // 변수를 선언합니다.
+                var pass = document.getElementById('pass').value;
+                var pass_check = document.getElementById('pass_check').value;
+                // 비밀번호가 같은지 확인합니다.
+                if (pass == pass_check) {
+                    alert('성공');
+                } else {
+                    alert('다시 입력해주세요.');
+                    return false;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <form id="my_form">
+        <label for="name">이름</label><br/>
+        <input type="text" name="name" id="name"/><br/>
+        <label for="pass">비밀번호</label><br/>
+        <input type="password" name="pass" id="pass"/><br/>
+        <label for="pass_check">비밀번호 확인</label><br/>
+        <input type="password" id="pass_check"/><br/>
+        <input type="submit" value="제출"/>
+    </form>
+</body>
+
+
+//9 Form Tag Submit (onSubmit)
+ <script>
+        function whenSubmit() {
+            // 변수를 선언합니다.
+            var pass = document.getElementById('pass').value;
+            var pass_check = document.getElementById('pass_check').value;
+            // 비밀번호가 같은지 확인합니다.
+            if (pass == pass_check) {
+                alert('성공');
+            } else {
+                alert('다시 입력해주세요.');
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="my_form" onsubmit="return whenSubmit()">
+        <label for="name">이름</label><br/>
+        <input type="text" name="name" id="name"/><br/>
+        <label for="pass">비밀번호</label><br/>
+        <input type="password" name="pass" id="pass"/><br/>
+        <label for="pass_check">비밀번호 확인</label><br/>
+        <input type="password" id="pass_check"/><br/>
+        <input type="submit" value="제출"/>
+    </form>
+</body>
+
+
+//10 
+<script>
+        window.onload = function () {
+            // 이벤트를 연결합니다.
+            document.getElementById('header').onclick = function () {
+                alert('header');
+            };
+            document.getElementById('paragraph').onclick = function (e) {
+                // 이벤트 객체를 처리합니다.
+                var event = e || window.event;
+                // 이벤트 발생을 알립니다.
+                alert('paragraph');
+                // 이벤트 전달을 제거합니다.
+                event.cancelBubble = true;
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1 id="header">
+        <p id="paragraph">Pagagraph</p>
+    </h1>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
