@@ -1,0 +1,161 @@
+
+        //1 함수, 배열, 출력
+
+<script>
+        function makeStudent(name, korean, math, english, science) {
+            var willReturn = {
+                // 속성
+                이름: name,
+                국어: korean,
+                수학: math,
+                영어: english,
+                과학: science,
+                // 메서드
+                getSum: function () {
+                    return this.국어 + this.수학 + this.영어 + this.과학;
+                },
+                getAverage: function () {
+                    return this.getSum() / 4;
+                },
+                toString: function () {
+                    return this.이름 + '\t' + this.getSum() + '\t' + this.getAverage();
+                }
+            };
+            return willReturn;
+        }
+
+        // 학생 정보 배열을 만듭니다.
+        var students = [];
+        students.push(makeStudent('윤인성', 87, 98, 88, 95));
+        students.push(makeStudent('연하진', 92, 98, 96, 98));
+        students.push(makeStudent('구지연', 76, 96, 94, 90));
+        students.push(makeStudent('나선주', 98, 92, 96, 92));
+        students.push(makeStudent('윤아린', 95, 98, 98, 98));
+        students.push(makeStudent('윤명월', 64, 88, 92, 92));
+        students.push(makeStudent('김미화', 82, 86, 98, 88));
+        students.push(makeStudent('김연화', 88, 74, 78, 92));
+        students.push(makeStudent('박아현', 97, 92, 88, 95));
+        students.push(makeStudent('서준서', 45, 52, 72, 78));
+
+        // 출력합니다.
+        var output = '이름\t총점\t평균\n';
+        for (var i in students) {
+            output += students[i].toString() + '\n';
+        }
+        alert(output);
+    </script>
+    
+    
+    //2 생성자 설정, 메소드, 배열, 출력
+    
+     <script>
+        function Student(name, korean, math, english, science) {
+            // 속성
+            this.이름 = name;
+            this.국어 = korean;
+            this.수학 = math;
+            this.영어 = english;
+            this.과학 = science;
+            // 메서드
+            this.getSum = function () {
+                return this.국어 + this.수학 + this.영어 + this.과학;
+            };
+            this.getAverage = function () {
+                return this.getSum() / this.length();
+            };
+            this.toString = function () {
+                return this.이름 + '\t' + this.getSum() + '\t' + this.getAverage();
+            };
+        }
+        // 학생 정보 배열을 만듭니다.
+        var students = [];
+        students.push(new Student('윤인성', 87, 98, 88, 95));
+        students.push(new Student('연하진', 92, 98, 96, 98));
+        students.push(new Student('구지연', 76, 96, 94, 90));
+        students.push(new Student('나선주', 98, 92, 96, 92));
+        students.push(new Student('윤아린', 95, 98, 98, 98));
+        students.push(new Student('윤명월', 64, 88, 92, 92));
+        students.push(new Student('김미화', 82, 86, 98, 88));
+        students.push(new Student('김연화', 88, 74, 78, 92));
+        students.push(new Student('박아현', 97, 92, 88, 95));
+        students.push(new Student('서준서', 45, 52, 72, 78));
+
+        // 출력합니다.
+        var output = '이름\t총점\t평균\n';
+        for (var i in students) {
+            output += students[i].toString() + '\n';
+        }
+        alert(output);
+    </script>
+    
+    
+    //3 클래스 타입 확인
+        <script>
+        // 생성자 함수를 선언합니다.
+        function Student(name) { this.name = name; }
+        // 변수를 선언합니다.
+        var student = new Student('윤인성');
+        // 출력합니다.
+        alert(student instanceof Student);
+    </script>
+    
+    
+    //4 생성자 함수 선언 및 출력
+    
+     <script>
+        // 생성자 함수를 선언합니다.
+        function Constructor(value) {
+            this.value = value;
+        }
+        // 변수를 선언합니다.
+        var constructor = new Constructor('Hello');
+        // 출력합니다.
+        alert(constructor.value);
+        
+        //test 안됨
+        function HIHI(value){
+        	this.value=value;  	
+        }        
+        var constr= new HIHI('NONO');
+        
+        alert(constr.value);
+    </script>
+    
+    
+    //4 생성자 함수 추가 예제 (sqr, rect)
+    
+      <script>
+        // 생성자 함수를 선언합니다.
+        function Rectangle(w, h) {
+            var width = w;
+            var height = h;
+
+            this.getWidth = function () { return width; };
+            this.getHeight = function () { return height; };
+            this.setWidth = function (value) {
+                if (value < 0) {
+                    throw '길이는 음수일 수 없습니다.';
+                } else {
+                    width = value;
+                }
+            };
+            this.setHeight = function (value) {
+                if (value < 0) {
+                    throw '길이는 음수일 수 없습니다.';
+                } else {
+                    height = value;
+                }
+            };
+        }
+
+        Rectangle.prototype.getArea = function () {
+            return this.getWidth() * this.getHeight();
+        };
+
+        // 변수를 선언합니다.
+        var rectangle = new Rectangle(5, 7);
+        rectangle.setWidth(-2);
+
+        // 출력합니다.
+        alert('AREA: ' + rectangle.getArea());
+    </script>
