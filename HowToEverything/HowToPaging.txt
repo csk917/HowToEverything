@@ -1,0 +1,10 @@
+
+
+paging
+1 기본 변수
+-currentPage, showArticleLimit, showPageLimit
+startArticleNum, endArticleNum, totalNum
+-페이지를 최초에 받기
+-가져올 줄 수 -startArticleNum, endArticleNum (가져오는 article제한 수)
+-위에 있는 걸 param으로 사용해서 service에 접근.
+-pageHtml -startPage, endPage

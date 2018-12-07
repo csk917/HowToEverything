@@ -1,0 +1,55 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================
+
+
+<c:choose>
+	<c:when test="${board.writerId==userId}">
+		<input type="button" value="삭제" class="writeBt" onclick="moveAction(1)" />
+		<input type="button" value="수정" class="writeBt" onclick="moveAction(2)" />
+		<input type="button" value="목록" class="writeBt" onclick="moveAction(3)" />
+	</c:when>
+	<c:otherwise>
+		<input type="button" value="추천" class="writeBt" onclick="moveAction(4)" />
+		<input type="button" value="목록" class="writeBt" onclick="moveAction(3)" />
+	</c:otherwise>
+
+
+function moveAction(where){
+		switch(where){
+		case 1:
+			if(confirm("글을 삭제하시겠습니까?")){
+				location.href="delete.do?idx=${board.idx}";
+			}
+			break;
+		
+		case 2:
+			if(confirm("글을 수정하시겠습니까?")){
+				location.href="modify.do?idx=${borad.idx}";
+			}
+			break;
+		
+		case 3:
+			location.href="list.do";
+			break;
+		
+		case 4:
+			if(confirm("글을 추천하시겠습니까?")){
+				location.href="recommend.do?idx=${board.idx}";
+			}
+			break;
+		}
+	}

@@ -1,0 +1,6 @@
+
+
+Controller
+-ÇÊ¼ö Controller --> RequestMapping --> getParameter() --> serviceMethod(param) -->
+ ModelAndView - addObject + setViewName --> (validationCode) --> return mav
+-Applicationcontext, Service Initialize

@@ -1,0 +1,10 @@
+
+
+iBatis initiate
+1 applicationcontext.xml
+-프로퍼티 파일에 dataSource 설정 및 연결
+-sqlMapConfig 설정
+-sqlMapclientTemplate -bean
+-Service와 연결
+2 sqlMapConfig.xml
+-iBatis에 대한 config 설정 dataSource

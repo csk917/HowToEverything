@@ -1,0 +1,7 @@
+
+
+service
+1 SqlMapClientTemplate
+2 valueMap <String,Object> initiate
+3 Use methods from interface and @Override
+4 Access ibatis.xml for DB ÀÛ¾÷

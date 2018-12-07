@@ -1,0 +1,8 @@
+
+
+upload controller
+-Use MulttipartFile
+-concat Path+Name
+-condition if exist- add Date().getTime()+fileName
+-transferTo()
+

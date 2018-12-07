@@ -1,0 +1,85 @@
+
+
+modify
+1 make method
+2 get param- userid(session), idx
+3 execute query 
+4 setting for textarea
+5 addobject, setviewName in modelandview
+6 validate
+7 return mav
+
+
+
+modifyProc <File Upload>
+1 get param- model
+2 get org and new file
+3 check !null
+4 remove orgfile
+5 upload newFile
+6 modifyArticle
+7 addObject, setViewName of mav.
+8 return mav
+
+
+
+
+
+
+===============
+@RequestMapping("/modify.do")
+	public ModelAndView boardModify(HttpServletRequest request, HttpSession session){
+		String userId=(String) session.getAttribute("userId");
+		int idx = Integer.parseInt(request.getParameter("idx"));
+		
+		BoardModel board = boardService.getOneArticle(idx);
+		// <br /> tag change to new line code
+		String content = board.getContent().replaceAll("<br />", "\r\n");
+		board.setContent(content);
+		
+		ModelAndView mav=new ModelAndView();
+		
+		if(!userId.equals(board.getWriterId())) {
+			mav.addObject("board", board);
+			mav.setViewName("/board/modify");
+		}
+		
+		return mav;
+	}
+
+@RequestMapping(value = "/modify.do", method=RequestMethod.POST)
+	public ModelAndView boardModifyProc(@ModelAttribute("BoardModel") BoardModel boardModel, MultipartHttpServletRequest request){
+		String orgFileName=request.getParameter("orgfile");
+		MultipartFile newFile = request.getFile("newFile");
+		String newFileName = newFile.getOriginalFilename();
+		
+		boardModel.setFileName(orgFileName);
+		
+		// if: when want to change upload file
+		if(newFile != null && !newFileName.equals("")){
+			if(orgFileName != null || !orgFileName.equals("")){
+				// remove uploaded file
+				File removeFile = new File(uploadPath  + orgFileName);
+				removeFile.delete();
+			}
+			//create new upload file
+			File newUploadFile= new File(uploadPath + newFileName);
+			try {
+				newFile.transferTo(newUploadFile);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			boardModel.setFileName(newFileName);
+		}
+		
+		// new line code change to <br /> tag
+		String content =  boardModel.getContent().replaceAll("\r\n", "<br />");		
+		boardModel.setContent(content);
+		
+		boardService.modifyArticle(boardModel);
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("idx", boardModel.getIdx());
+		mav.setViewName("redirect:/board/view.do");
+		return mav;
+	}

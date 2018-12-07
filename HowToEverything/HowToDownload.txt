@@ -1,0 +1,144 @@
+
+
+download
+
+1 downloadController
+2 download view
+3 web.xml, dispatcherNonHtml-controller initiate
+
+
+
+
+
+
+
+
+
+============================================================================================
+
+[DownloadController.java]
+	package madvirus.spring.chap07.controller;
+
+	import java.io.File;
+
+	import org.springframework.beans.BeansException;
+	import org.springframework.context.ApplicationContext;
+	import org.springframework.context.ApplicationContextAware;
+	import org.springframework.stereotype.Controller;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.context.WebApplicationContext;
+	import org.springframework.web.servlet.ModelAndView;
+
+	@Controller
+	public class DownloadController implements ApplicationContextAware {
+
+		private WebApplicationContext context = null;
+
+		@RequestMapping("/file")
+		public ModelAndView download() throws Exception {
+			File downloadFile = getFile();
+			return new ModelAndView("download", "downloadFile", downloadFile);
+		}
+
+		private File getFile() {
+			String path = context.getServletContext().getRealPath(
+					"/WEB-INF/Ό³Έν.txt");
+			return new File(path);
+		}
+
+		@Override
+		public void setApplicationContext(ApplicationContext applicationContext)
+				throws BeansException {
+			this.context = (WebApplicationContext) applicationContext;
+		}
+
+	}
+
+[DownloadView.java]
+	package madvirus.spring.chap07.view;
+
+	import java.io.File;
+	import java.io.FileInputStream;
+	import java.io.IOException;
+	import java.io.OutputStream;
+	import java.net.URLEncoder;
+	import java.util.Map;
+
+	import javax.servlet.http.HttpServletRequest;
+	import javax.servlet.http.HttpServletResponse;
+
+	import org.springframework.util.FileCopyUtils;
+	import org.springframework.web.servlet.view.AbstractView;
+
+	public class DownloadView extends AbstractView {
+
+		public DownloadView() {
+			setContentType("application/download; charset=utf-8");
+		}
+
+		@Override
+		protected void renderMergedOutputModel(Map<String, Object> model,
+				HttpServletRequest request, HttpServletResponse response)
+				throws Exception {
+			File file = (File) model.get("downloadFile");
+
+			response.setContentType(getContentType());
+			response.setContentLength((int) file.length());
+
+			String userAgent = request.getHeader("User-Agent");
+			boolean ie = userAgent.indexOf("MSIE") > -1;
+			String fileName = null;
+			if (ie) {
+				fileName = URLEncoder.encode(file.getName(), "utf-8");
+			} else {
+				fileName = new String(file.getName().getBytes("utf-8"),
+						"iso-8859-1");
+			}
+			response.setHeader("Content-Disposition", "attachment; filename=\""
+					+ fileName + "\";");
+			response.setHeader("Content-Transfer-Encoding", "binary");
+			OutputStream out = response.getOutputStream();
+			FileInputStream fis = null;
+			try {
+				fis = new FileInputStream(file);
+				FileCopyUtils.copy(fis, out);
+			} finally {
+				if (fis != null)
+					try {
+						fis.close();
+					} catch (IOException ex) {
+					}
+			}
+			out.flush();
+		}
+
+	}
+
+	[web.xml]
+	...
+	<servlet>
+		<servlet-name>dispatcherNonHtml</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dispatcherNonHtml</servlet-name>
+		<url-pattern>/download/*</url-pattern>
+	</servlet-mapping>
+	...
+
+	[dispatcherNonHtml-servlet.xml]
+	<?xml version="1.0" encoding="UTF-8"?>
+
+	<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans   
+	       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+		<bean id="downloadController" class="madvirus.spring.chap07.controller.DownloadController" />	
+
+		<bean id="viewResolver"
+			class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
+		<bean id="download" class="madvirus.spring.chap07.view.DownloadView" />
+	</beans>

@@ -1,0 +1,46 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==========================
+
+1
+
+<tr>
+	<th><label for="subject">제목</label></th>
+	<td>
+		<input type="text" id="subject" name="subject" class="boardSubject"/>
+		<input type="hidden" id="writer" name="writer" value="${userName}" />
+		<input type="hidden" id="writerId" name="writerId" value="${userId}" />
+	</td>
+</tr>
+
+
+
+
+function writeFormCheck(){
+		if($("#subject").val()==null || $("#subject").val() == ""){
+			alert("제목을 입력해 주세요!");
+			$("#subject").focus();
+			return false;
+		}
+		if($("#content").val() == null || $("#content").val() == ""){
+			alert("내용을 입력해 주세요!");
+			$("#content").focus();
+			return false;
+		}		
+		return true;
+	}
+
+2

@@ -1,0 +1,9 @@
+server.xml
+
+63มู languageEncoding
+
+
+
+   URI ENCODING!!!!!!!!!!!!!!!!!!!!!!
+    -->
+    <Connector connectionTimeout="20000" port="8090" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="UTF-8"/>

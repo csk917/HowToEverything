@@ -1,0 +1,64 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================
+
+
+@RequestMapping("/list.do")
+	public ModelAndView boardList(HttpServletRequest request, HttpServletResponse response) {
+	
+	String type=null;
+	String keyword=null;
+	
+	//set var from request param
+	if(request.getParameter("page")==null ||request.getParameter("page").trim().isEmpty() || request.getParameter("page").equals("0")) {
+		currentPage =1;
+	} else {
+		currentPage= Integer.parseInt(request.getParameter("page"));
+	}
+	
+	if(request.getParameter("type") != null) {
+		type=request.getParameter("type").trim();
+	}
+	if(request.getParameter("keyword") != null) {
+		keyword=request.getParameter("keyword").trim();
+	}
+	
+	//expression article var value
+	startArticleNum = (currentPage - 1) * showArticleLimit + 1;
+	endArticleNum = startArticleNum + showArticleLimit -1;
+			
+	//get boardList and get page html code
+	List<BoardModel> boardList;
+	if(type !=null && keyword !=null) {
+		boardList= boardService.searchArticle(type, keyword, startArticleNum, endArticleNum);
+		totalNum= boardService.getSearchTotalNum(type, keyword);
+	} else {
+		boardList=boardService.getBoardList(startArticleNum, endArticleNum);
+		totalNum=boardService.getTotalNum();
+	}
+	StringBuffer pageHtml=getPageHtml(currentPage, totalNum, showArticleLimit, showPageLimit, type, keyword);
+	
+	ModelAndView mav=new ModelAndView();
+	mav.addObject("boardList", boardList);
+	mav.addObject("pageHtml", pageHtml);
+	mav.setViewName("/board/list");
+	
+	return mav;
+	}

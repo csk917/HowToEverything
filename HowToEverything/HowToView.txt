@@ -1,0 +1,36 @@
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================
+
+
+
+@RequestMapping("/view.do")
+	public ModelAndView boardView(HttpServletRequest request){
+		int idx=Integer.parseInt(request.getParameter("idx"));
+		BoardModel board=boardService.getOneArticle(idx);
+		boardService.updateHitcount(board.getHitcount()+1, idx);
+		
+		List<BoardCommentModel> commentList = boardService.getCommentList(idx); // get comment list
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("board", board);
+		mav.addObject("commentList", commentList);
+		mav.setViewName("/board/view");
+		return mav;
+	}

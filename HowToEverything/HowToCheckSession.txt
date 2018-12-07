@@ -1,0 +1,8 @@
+
+Session Intercept
+
+1 SessionInterceptor.java 
+-모든 page마다 실행 prehandle 조건
+-로그인 했는지 안했는지 확인
+-posthandle 조건
+ 

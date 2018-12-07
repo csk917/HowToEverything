@@ -1,0 +1,34 @@
+
+iBatis
+
+기본 로직
+1 선택- 무엇을 어디서 어떻게 (어떤식으로)
+-select . from . where . (group by/outer join)
+
+Column명
+$column$
+#data#  -- '   '
+
+Search
+-$ $ 표시시 칼럼명이 바뀔 수 있어서 쿼리 세 개를 하나로 합칠 수 있다. 
+
+별칭 주기 (순서)
+data alias
+
+parameterClass
+-입력 데이터
+
+resultClass
+-결과 데이터
+
+Sequence사용
+-SEQ.nextval
+-SEQ.currval
+
+날짜 사용
+-sysdate
+
+getTotal
+-count(idx)
+
+
