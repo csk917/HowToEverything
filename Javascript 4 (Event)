@@ -174,7 +174,7 @@
 </body>
 
 
-//9 Form Tag Submit (onSubmit)
+//9 Form Tag Submit (onSubmit- 함수 형태)
  <script>
         function whenSubmit() {
             // 변수를 선언합니다.
@@ -203,7 +203,27 @@
 </body>
 
 
-//10 
+//10 이벤트 전파.  <이중 이벤트>
+ <script>
+        window.onload = function () {
+            // 이벤트를 연결합니다. 순차적으로 이중 동작. 이벤트의 전파
+            document.getElementById('header').onclick = function () {
+                alert('header');
+            };
+            document.getElementById('paragraph').onclick = function () {
+                alert('paragraph');
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1 id="header">
+        <p id="paragraph">Pagagraph</p>
+    </h1>
+</body>
+
+
+//11 이벤트 전파 막음
 <script>
         window.onload = function () {
             // 이벤트를 연결합니다.
@@ -231,10 +251,65 @@
 </body>
 
 
+//12 하나에 이벤트 여러개 처리 (IE에서만 가능)
+ <script>
+        // 윈도우가 로드될 때
+        window.attachEvent('onload', function () { //onload이벤트 발생시 함수 실행.
+            // myHeader를 가져옵니다.
+            var header = document.getElementById('myHeader');
+            // 이벤트를 연결합니다.
+            header.attachEvent('onclick', function () { alert('클릭'); });
+            header.attachEvent('onclick', function () { alert('클릭'); });
+            header.attachEvent('onclick', function () { alert('클릭'); });
+            // header.detachEvent('onclick', handler); //이벤트 끊기 1:1시 이벤트 실행 동시에 바로 제거되어 출력 X
+        });
+    </script>
+</head>
+<body>
+    <h1 id="myHeader">Click</h1>
+</body>
+
+//13 이벤트 html 추가
+ <script>
+        window.onload = function () {
+            var header = document.getElementById('myHeader');
+            header.addEventListener('click', function () {
+                this.innerHTML += '+';
+            });
+        };
+    </script>
+</head>
+<body>
+    <h1 id="myHeader">Click</h1>
+</body>
 
 
-
-
+//14 이벤트 스타일 교체
+ <script>
+        window.onload = function () {
+            var header = document.getElementById('myHeader');
+            if (header.attachEvent) {
+                // 인터넷 익스플로러의 경우 실행합니다.
+                var handler = function () {
+                    window.event.srcElement.style.color = 'red';
+                    window.event.srcElement.detachEvent('onclick', handler);
+                };
+                header.attachEvent('onclick', handler);
+            } else {
+                // 그 이외의 브라우저에서 실행합니다.
+                var handler = function () {
+                    this.style.color = 'red';
+                    this.removeEventListener('click', handler);
+                };
+                header.addEventListener('click', handler);
+                header.addEventListener('click', handler);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1 id="myHeader">Click</h1>
+</body>
 
 
 
