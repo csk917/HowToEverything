@@ -8,7 +8,10 @@ $(property).method(function(){});
 EX
 window.onload() == $(document).ready(function(){});
 
+.filter(selection/function/elements)
+Reduce the set of matched elements to those that match the selector or pass the function's test.
 
+=======================================
 
 //1 CSS 접근
 <script>
