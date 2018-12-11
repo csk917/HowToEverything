@@ -1,0 +1,24 @@
+
+DOM
+open(method, url, async)	Specifies the type of request
+
+method: the type of request: GET or POST
+url: the server (file) location
+async: true (asynchronous) or false (synchronous) 
+
+XML
+xmlDoc - the XML DOM object created by the parser.
+getElementsByTagName("title")[0] - get the first <title> element
+childNodes[0] - the first child of the <title> element (the text node)
+nodeValue - the value of the node (the text itself)
+
+
+Event
+document.addEventListener(event, function, useCapture) 
+
+event	Required. A String that specifies the name of the event.
+function	Required. Specifies the function to run when the event occurs. 
+useCapture	Optional. A Boolean value that specifies whether the event should be executed in the capturing or in the bubbling phase. 
+
+alert(event.target);
+The target event property returns the element that triggered the event.
