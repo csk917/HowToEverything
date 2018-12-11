@@ -1,0 +1,51 @@
+Class HashSet<E>
+java.lang.Object
+  java.util.AbstractCollection<E>
+    java.util.AbstractSet<E>
+      java.util.HashSet<E>
+      
+생성자
+HashSet()
+Constructs a new, empty set; the backing HashMap instance has default initial capacity (16) and load factor (0.75).
+(해시세트 초기화)
+
+HashSet(Collection<? extends E> c)
+Constructs a new set containing the elements in the specified collection.
+
+HashSet(int initialCapacity)
+Constructs a new, empty set; the backing HashMap instance has the specified initial capacity and default load factor (0.75).
+(사이즈 지정)
+
+HashSet(int initialCapacity, float loadFactor)
+Constructs a new, empty set; the backing HashMap instance has the specified initial capacity and the specified load factor.
+
+메소드
+boolean	add(E e)
+Adds the specified element to this set if it is not already present.
+(객체 추가)
+
+void	clear()
+Removes all of the elements from this set.
+(전부 제거)
+
+Object	clone()
+Returns a shallow copy of this HashSet instance: the elements themselves are not cloned.
+(복사)
+
+boolean	contains(Object o)
+Returns true if this set contains the specified element.
+(객체 있니? 1/0)
+
+boolean	isEmpty()
+Returns true if this set contains no elements.
+(비었니? 1/0)
+
+Iterator<E>	iterator()
+Returns an iterator over the elements in this set.
+(세트 안에 있는 객체 돌림)
+
+boolean	remove(Object o)
+Removes the specified element from this set if it is present.
+(객체 제거 1/0)
+int	size()
+Returns the number of elements in this set (its cardinality).
