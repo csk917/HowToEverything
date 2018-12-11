@@ -376,17 +376,17 @@ window.onload() == $(document).ready(function(){});
 
         $(document).ready(function () {
             // 변수를 선언합니다.
-            var xmlDoc = $.parseXML(xml);
-            $(xmlDoc).find('friend').each(function (index) {
+            var xmlDoc = $.parseXML(xml); //parsing으로 xml 객체 생성.
+            $(xmlDoc).find('friend').each(function (index) { //friend 찾기
                 // 변수를 선언합니다.
                 var output = '';
                 output += '<div>';
-                output += '    <h1>' + $(this).find('name').text() + '</h1>';
+                output += '    <h1>' + $(this).find('name').text() + '</h1>'; //name 태그 사이 텍스트 꺼내기.
                 output += '    <p>' + $(this).find('language').text() + '</p>';
                 output += '</div>';
 
                 // 출력합니다.
-                document.body.innerHTML += output;
+                document.body.innerHTML += output; //body tag에 innerHtml로 넣기.
             });
-        });
+        }); //xml데이터를 css하고 붙이는 기능. 
     </script>
