@@ -177,13 +177,216 @@ window.onload() == $(document).ready(function(){});
 <body>
 </body>
 
-//10 
+//10 클래스 추가 
+  <style>
+        .high_light {
+            background:Yellow;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('h1').addClass('high_light');
+        });
+    </script>
+</head>
+<body>
+    <h1>item - 0</h1>
+    <h1>item - 1</h1>
+    <h1>item - 2</h1>
+    <h1>item - 3</h1>
+    <h1>item - 4</h1>
+</body>
 
+//11 index로 각각 클래스 적용
+ <style>
+        .high_light_0 { background:Yellow; }
+        .high_light_1 { background:Orange; }
+        .high_light_2 { background:Blue; }
+        .high_light_3 { background:Green; }
+        .high_light_4 { background:Red; }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('h1').each(function (index, item) {
+                $(item).addClass('high_light_' + index); //item에 this 넣어도 동작한다. 
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>item - 0</h1>
+    <h1>item - 1</h1>
+    <h1>item - 2</h1>
+    <h1>item - 3</h1>
+    <h1>item - 4</h1>
+</body>
 
+//12 객체 생성
+<script>
+        $(document).ready(function () {
+            var object = {}; //스크립트에서 객체 선언 후 변수 만들어서 값 넣기. 
+            object.name = 'RintIanTta';
+            object.gender = 'Male';
+            object.part = 'Second Guitar';
+        });
+    </script>
+    
+ //13 객체에 추가 및 출력
+ <script>
+        $(document).ready(function () {
+            // 변수를 선언합니다.
+            var object = { name: 'RintIanTta' }; //객체에 변수
 
+            // $.extend() 메서드를 사용합니다.
+            $.extend(object, { //객체 추가시키기
+                gender: 'Male',
+                part: 'Second Guitar'
+            });
 
+            // 출력합니다.
+            var output = '';
+            $.each(object, function (key, item) {
+                output += key + ': ' + item + '\n';
+            });
+            alert(output);
+        });
+    </script>
 
+//14 .filter- h3 중에 짝수 빼기
+<script>
+        $(document).ready(function () {
+            $('h3').filter(':even').css({
+                backgroundColor: 'Black',
+                color: 'White'
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>Header-0</h3>
+    <h3>Header-1</h3>
+    <h3>Header-2</h3>
+    <h3>Header-3</h3>
+    <h3>Header-4</h3>
+    <h3>Header-5</h3>
+</body>
 
+//15 filter 나누기. (함수 생성)
+ <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('h3').filter(function (index) {
+                return index % 3 == 0;
+            }).css({
+                backgroundColor: 'Black',
+                color: 'White'
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>Header-0</h3>
+    <h3>Header-1</h3>
+    <h3>Header-2</h3>
+    <h3>Header-3</h3>
+    <h3>Header-4</h3>
+    <h3>Header-5</h3>
+</body>
 
+//16 filter 후 또 filter .end()
+<script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('h1').css('background', 'Orange').filter(':even').css('color', 'White').end().filter(':odd').css('color', 'Red');
+        });
+    </script>
+</head>
+<body>
+    <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1>
+</body>
 
+//17 float 속성, .add 여러개 태그 적용
+<head>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('h1').css('background', 'Gray').add('h2').css('float', 'left');
+        });
+    </script>
+</head>
+<body>
+    <h1>Header-0</h1>
+    <h2>Header-1</h2>
+    <h1>Header-2</h1>
+    <h2>Header-3</h2>
+    <h1>Header-4</h1>
+</body>
 
+//18 is 함수
+ <script>
+        $(document).ready(function () {
+            $('h1').each(function () {
+                if ($(this).is('.select')) {
+                    $(this).css('background', 'Orange');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 class="select">Header-0</h1>
+    <h1>Header-1</h1>
+    <h1 class="select">Header-2</h1>
+</body>
+
+//19 xml 선언 및 
+ <style>
+        div 
+        {
+            margin:10px;
+            border:3px Solid Black;
+            border-radius:10px;
+            float:left;
+            width:120px; height:120px;
+            text-align:center;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        // 변수를 선언합니다.
+        var xml = '';
+        xml += '<friends>';
+        xml += '    <friend>';
+        xml += '        <name>연하진</name>';
+        xml += '        <language>Ruby</language>';
+        xml += '    </friend>';
+        xml += '    <friend>';
+        xml += '        <name>윤명월</name>';
+        xml += '        <language>Basic</language>';
+        xml += '    </friend>';
+        xml += '    <friend>';
+        xml += '        <name>윤하린</name>';
+        xml += '        <language>C#</language>';
+        xml += '    </friend>';
+        xml += '</friends>';
+
+        $(document).ready(function () {
+            // 변수를 선언합니다.
+            var xmlDoc = $.parseXML(xml);
+            $(xmlDoc).find('friend').each(function (index) {
+                // 변수를 선언합니다.
+                var output = '';
+                output += '<div>';
+                output += '    <h1>' + $(this).find('name').text() + '</h1>';
+                output += '    <p>' + $(this).find('language').text() + '</p>';
+                output += '</div>';
+
+                // 출력합니다.
+                document.body.innerHTML += output;
+            });
+        });
+    </script>
