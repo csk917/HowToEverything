@@ -142,17 +142,24 @@ Returns the greatest element in this set strictly less than the given element, o
 
 E	pollFirst()
 Retrieves and removes the first (lowest) element, or returns null if this set is empty.
+
 E	pollLast()
 Retrieves and removes the last (highest) element, or returns null if this set is empty.
+
 boolean	remove(Object o)
 Removes the specified element from this set if it is present.
+
 int	size()
 Returns the number of elements in this set (its cardinality).
+
 NavigableSet<E>	subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)
 Returns a view of the portion of this set whose elements range from fromElement to toElement.
+
 SortedSet<E>	subSet(E fromElement, E toElement)
 Returns a view of the portion of this set whose elements range from fromElement, inclusive, to toElement, exclusive.
+
 SortedSet<E>	tailSet(E fromElement)
 Returns a view of the portion of this set whose elements are greater than or equal to fromElement.
+
 NavigableSet<E>	tailSet(E fromElement, boolean inclusive)
 Returns a view of the portion of this set whose elements are greater than (or equal to, if inclusive is true) fromElement.메소드
