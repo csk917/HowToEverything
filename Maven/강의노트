@@ -11,3 +11,61 @@ command console
 
 groupId-프로젝트 묶음
 artifactId-프로젝트명
+
+================
+
+메이븐 생성 (command console)
+
+1 설치 -http://maven.apache.org/
+  -다운로드 받은 파일의 압축을 푼다. 예, apache-maven-3.5.2.zip 파일의 압축을 C:에 풀면 c:\apache-maven-3.5.2 디렉토리가 생성된다.
+  -PATH 환경 변수에서 메이븐 bin 디렉토리를 추가한다. 
+  -예) PATH=c:\apache-maven-3.5.2\bin;%PATH%
+  -JAVA_HOME 환경 변수가 올바르게 설정되어 있는지 확인한다. 참고로, 메이븐 3.3 이후부터는 자바 1.7 이상을 요구한다.
+  -설치를 끝냈으면, 다음 명령어를 실행해서 메이븐이 올바르게 동작하는지 확인한다.
+2 $ mvn -version (설정 제대로 되었는지 확인)
+3 mvn archetype:generate (프로젝트 생성)
+4 mvn compile (target/classes 폴더에 컴파일 결과 저장)
+5 $ mvn test 
+6 $ mvn package
+
+================
+
+기본 세팅:
+PATH
+/maven/projectName/src/main/java/여기에 파일 만들어야 한다.
+/src/test/java/테스트 용도
+
+pom.xml 자바 버전 수정 필요
+ <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+ </build>
+ 
+ POM 개념
+ 위 POM 파일에서 프로젝트 정보를 기술하는 태그는 다음과 같다.
+
+<name> - 프로젝트 이름
+<url> - 프로젝트 사이트 URL
+POM 연관 정보는 프로젝트간 연관 정보를 기술하는데, 관련 태그는 다음과 같다.
+
+<groupId> - 프로젝트의 그룹 ID 설정
+<artifactId> - 프로젝트의 Artifact ID 설정
+<version> - 버전 설정
+<packaging> - 패키징 타입 설정. 위 코드의 경우 프로젝트의 결과 Artifact가 jar 파일로 생성됨을 의미한다. jar뿐만 아니라 웹 어플리케이션을 위한 war나 JEE를 위한 ear 등의 패키징 타입이 존재한다.
+<dependencies> - 이 프로젝트에서 의존하는 다른 프로젝트 정보를 기술한다.
+<dependency> - 의존하는 프로젝트 POM 정보를 기술
+<groupId> - 의존하는 프로젝트의 그룹 ID
+<artifactId> - 의존하는 프로젝트의 artifact ID
+<version> - 의존하는 프로젝트의 버전
+<scope> - 의존하는 범위를 설정
+ 
+
