@@ -1,0 +1,56 @@
+java.util
+Interface Enumeration<E>
+public interface Enumeration<E>
+
+
+메소드
+boolean	hasMoreElements()
+Tests if this enumeration contains more elements.
+(배열에 객체 있는지 1/0)
+
+E	nextElement()
+Returns the next element of this enumeration if this enumeration object has at least one more element to provide.
+(배열에 객체 있으면 return)
+
+java.util
+Interface ListIterator<E>
+
+public interface ListIterator<E>
+  extends Iterator<E>
+  
+  메소드
+void	add(E e)
+Inserts the specified element into the list (optional operation).
+(객체 추가)
+
+boolean	hasNext()
+Returns true if this list iterator has more elements when traversing the list in the forward direction.
+(있니? 1/0)
+
+boolean	hasPrevious()
+Returns true if this list iterator has more elements when traversing the list in the reverse direction.
+(있니 반대로? 1/0)
+
+E	next()
+Returns the next element in the list and advances the cursor position.
+(다음 객체)
+
+int	nextIndex()
+Returns the index of the element that would be returned by a subsequent call to next().
+(다음 객체@)
+
+E	previous()
+Returns the previous element in the list and moves the cursor position backwards.
+(이전 객체)
+
+int	previousIndex()
+Returns the index of the element that would be returned by a subsequent call to previous().
+(이전 객체@)
+
+void	remove()
+Removes from the list the last element that was returned by next() or previous() (optional operation).
+(이전 (return) 객체 제거)
+
+void	set(E e)
+Replaces the last element returned by next() or previous() with the specified element (optional operation).
+(이전 (return) 객체 교체)
