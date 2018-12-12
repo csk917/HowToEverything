@@ -1,0 +1,22 @@
+참도되는 라이브러리 전부 받아오기 -- 주요 모듈간 의존 관계
+
+필요한 라이브러리 -- dependency ojdbc(필요한 도구)
+
+Maven Repository- dependecy로 추가만 하면 jar파일을 프로젝트에서 가져다 쓸 수 있다.
+
+
+메이븐 스프링 연결 (객체를 모아서 필요한 것만 사용하는 패턴)
+1 Maven class.java 를 생성한다 - mavenPath
+2 applicationContext에 생성된 자바 파일을 빈 설정을 한다. 
+MavenBuildRunner에 앞에서 설정한 값 넣기. 
+
+3 Main 클래스 스프링 ---는 MavenBuildRunner + Project 클래스와 결합도가 높음. (관계 설정)
+4 XML을 읽어드려 --classpath 경로를 잡아서 스프링 컨테이너가 (AbstractApplicationContext) 만들어져
+5 xml로딩한 걸 컨테이너에 넣는다
+6 스프링컨테이너에서 getBean(ID)로 가져다 쓰기. 
+
+
+/stsbundle/sts-3.9.6RELEASE/sts 로 스프링 작업
+
+일반적인 스프링 메이븐 사용시 Simple Spring Maven - NOT WEB
+프로젝트 사용시 Spring MVC Project - WEB
