@@ -9,3 +9,5 @@ Maven- XML형식 (우리 나라 전자정보 프레임워크)  //http://javacan.
 command console
 프로젝트 다운로드- maven시 --> 사용자에 local repository 기본값 user2
 
+groupId-프로젝트 묶음
+artifactId-프로젝트명
