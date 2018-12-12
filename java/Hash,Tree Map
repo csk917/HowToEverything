@@ -1,0 +1,141 @@
+java.util
+Class HashMap<K,V>
+
+java.lang.Object
+  java.util.AbstractMap<K,V>
+  java.util.HashMap<K,V>
+
+설명:
+K - the type of keys maintained by this map
+V - the type of mapped values
+
+생성자:
+Constructor and Description
+HashMap()
+Constructs an empty HashMap with the default initial capacity (16) and the default load factor (0.75).
+
+HashMap(int initialCapacity)
+Constructs an empty HashMap with the specified initial capacity and the default load factor (0.75).
+
+HashMap(int initialCapacity, float loadFactor)
+Constructs an empty HashMap with the specified initial capacity and load factor.
+
+HashMap(Map<? extends K,? extends V> m)
+Constructs a new HashMap with the same mappings as the specified Map.
+(동일한 맵핑 해시 만들기)
+
+메소드
+void	clear()
+Removes all of the mappings from this map.
+
+Object	clone()
+Returns a shallow copy of this HashMap instance: the keys and values themselves are not cloned.
+
+boolean	containsKey(Object key)
+Returns true if this map contains a mapping for the specified key.
+(해당 K 있니? 1/0)
+
+boolean	containsValue(Object value)
+Returns true if this map maps one or more keys to the specified value.
+(해당 V 있니? 1/0)
+
+Set<Map.Entry<K,V>>	entrySet()
+Returns a Set view of the mappings contained in this map.
+(K,V 리턴)
+
+V	get(Object key)
+Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+(맵핑된 V 리턴)
+
+boolean	isEmpty()
+Returns true if this map contains no key-value mappings.
+(맵핑없니? 1/0)
+
+Set<K>	keySet()
+Returns a Set view of the keys contained in this map.
+
+V	put(K key, V value)
+Associates the specified value with the specified key in this map.
+(K로 V 설정)
+
+void	putAll(Map<? extends K,? extends V> m)
+Copies all of the mappings from the specified map to this map.
+(K,V 복붙)
+
+V	remove(Object key)
+Removes the mapping for the specified key from this map if present.
+(K로 객체 제거)
+
+int	size()
+Returns the number of key-value mappings in this map.
+
+Collection<V>	values()
+Returns a Collection view of the values contained in this map.
+(객체의 V 리턴)
+
+
+
+java.util
+
+Class TreeMap<K,V>
+java.lang.Object
+  java.util.AbstractMap<K,V>
+    java.util.TreeMap<K,V>
+
+
+설명
+A TreeMap stores its data in a hierarchical tree with the ability to sort the elements with the help of a custom Comparator.
+(자동 소팅으로 )
+
+생성자
+TreeMap()
+Constructs a new, empty tree map, using the natural ordering of its keys.
+
+TreeMap(Comparator<? super K> comparator)
+Constructs a new, empty tree map, ordered according to the given comparator.
+
+TreeMap(Map<? extends K,? extends V> m)
+Constructs a new tree map containing the same mappings as the given map, ordered according to the natural ordering of its keys.
+
+TreeMap(SortedMap<K,? extends V> m)
+Constructs a new tree map containing the same mappings and using the same ordering as the specified sorted map.
+
+메소드
+void	clear()
+Removes all of the mappings from this map.
+
+Object	clone()
+Returns a shallow copy of this HashMap instance: the keys and values themselves are not cloned.
+
+boolean	containsKey(Object key)
+Returns true if this map contains a mapping for the specified key.
+
+boolean	containsValue(Object value)
+Returns true if this map maps one or more keys to the specified value.
+
+Set<Map.Entry<K,V>>	entrySet()
+Returns a Set view of the mappings contained in this map.
+
+V	get(Object key)
+Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+
+boolean	isEmpty()
+Returns true if this map contains no key-value mappings.
+
+Set<K>	keySet()
+Returns a Set view of the keys contained in this map.
+
+V	put(K key, V value)
+Associates the specified value with the specified key in this map.
+
+void	putAll(Map<? extends K,? extends V> m)
+Copies all of the mappings from the specified map to this map.
+
+V	remove(Object key)
+Removes the mapping for the specified key from this map if present.
+
+int	size()
+Returns the number of key-value mappings in this map.
+
+Collection<V>	values()
+Returns a Collection view of the values contained in this map.
