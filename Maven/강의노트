@@ -26,7 +26,7 @@ artifactId-프로젝트명
 3 mvn archetype:generate (프로젝트 생성)
 4 mvn compile (target/classes 폴더에 컴파일 결과 저장)
 5 $ mvn test 
-6 $ mvn package
+6 $ mvn package (패키징하기- jar파일로 만들어진다.)
 
 ================
 
@@ -62,7 +62,10 @@ POM 연관 정보는 프로젝트간 연관 정보를 기술하는데, 관련 �
 <version> - 버전 설정
 <packaging> - 패키징 타입 설정. 위 코드의 경우 프로젝트의 결과 Artifact가 jar 파일로 생성됨을 의미한다. jar뿐만 아니라 웹 어플리케이션을 위한 war나 JEE를 위한 ear 등의 패키징 타입이 존재한다.
 <dependencies> - 이 프로젝트에서 의존하는 다른 프로젝트 정보를 기술한다.
-<dependency> - 의존하는 프로젝트 POM 정보를 기술
+
+<dependency> - 의존하는 프로젝트 POM 정보를 기술 (클래스, 라이버리 전부 넣기) 버전 관리하고
+중앙에 넣어서 라이브러리 활용하려고 이렇게 쓴다. 
+
 <groupId> - 의존하는 프로젝트의 그룹 ID
 <artifactId> - 의존하는 프로젝트의 artifact ID
 <version> - 의존하는 프로젝트의 버전
