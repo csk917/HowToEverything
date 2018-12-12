@@ -1,0 +1,80 @@
+인간 -- DEBUGGING 
+
+
+QUEUE EX 1 --debugging 숙제~~~~~ 
+view 3가지 형태 매번 생각 1 메모리 그림 2 화면 3 텍스트 설명
+
+
+List list=new ArrayList(10); //다형성
+다형성으로 조상 참조 변수 만들면. List 기능 사용. 
+
+iterator로 만들어서 상속을 적용하면 arraylist/linkedlist에서 상속 받아서 쓸 수 있다. 
+
+ArrayList LinkedList
+순차적 접근 ArrayList 속도 + (중간에 넣을시 전체 행렬 이동 필요해서 속도 -)
+산발적 접근 LinkedList 속도 +  
+
+Stack- LIFO (ArrayList로 생성 추천)
+Queue- FIFO (LinkedList로 주로 구현)
+
+출력 방식 1 while(!object.isEmpty()) 2 while(object.hasNext())
+
+
+goURL-새로운 주소 이동 후 back forward URL 출력. 현재 화면 출력.
+1 네이트 2 야후 3 네이버 4 다음.
+
+goURL
+back 영역에 goURL(로 받음 String URL) 넣기.
+forward 영역에 값이 있으면 초기화.
+
+printStatus();부터 출력
+
+back:1 네이트 2 야후 3 네이버 4 다음.
+forward:""
+현재화면은 다음 입니다.
+(forward영역에 back의 최근 즉 다음을 뽑아서 넣기  -- goBack())
+=뒤로가기 버튼을 누른 후=
+back: 1 네이트 2 야후 3 네이버
+forward: 다음
+현재화면은 네이버 입니다. 
+= '뒤로'' 버튼을 누른 후=
+
+dequeue -- FIFO LIFO 둘 다 가능!!!!!
+
+Enumeration, Iterator, ListIterator
+==데이터를 꺼내 읽어오는 역할을 한다.
+표준화-- iterator. List -- ArrayList DAO/Service 처럼
+선언된 메소드만 사용하려고.
+Enumeration = Iterator 구 버전
+Vector = ArrayList 구 버전
+ListIterator = 단방향을 양방향으로
+
+Map 호출하려면 set 메소드 필요
+----
+
+Array
+-copyOf copies... 
+
+---------
+Comparable - 정렬기준 구현 ASC default  (같은 타입 인스턴스로만 비교)
+Comparator - 정렬기준 아닌 다른 기준으로 정렬
+======
+LIST 왜 쓰는가요?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
