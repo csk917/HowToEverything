@@ -1,0 +1,11 @@
+빌드 도구
+Gradle- Text형식 (안드로이드에서 사용)
+Maven- XML형식 (우리 나라 전자정보 프레임워크)  //http://javacan.tistory.com/entry/MavenBasic
+
+개념
+메이븐은 central repository 서버에서 필요한 jar파일을 다운받아 의존 모듈 (의존 관계에 있는 거 전부 가져오기) 관리한다. 
+  -dependency 설정하면 central rep.에서 필요한 jar 가져온다. 
+
+command console
+프로젝트 다운로드- maven시 --> 사용자에 local repository 기본값 user2
+
