@@ -48,8 +48,52 @@ SPRING DI
   bean태그
     -클래스 전체 명을 받아서
     -아이디로 사용 
-  
+    -ref는 DI 설정
+    -bean id - 1 DI 설정, 2 생성된 객체를 꺼내쓰기 위해
+    -아이디 안주면 자동 생성 - 패키지, 클래시명 다 포함되고 #숫자까지 넣어져 설정.
+   
+   
+   생성자로 <constructor-args>
+    -ID, PWD 설정해서 객체 생성도 가능하다. 
+    -new User("id","pwd") 와 같다.
+    -객체 아닌 integer, String 등 일반 값 설정시 <value> 사용
     
+    Threshold
+    -메소드에 값 설정도 가능 setThreshold(int integ);
+    -클래스의 객체 생성시 자동으로 setMethod로 5를 준다 <property name="threshold vlaue="5"/>
+    
+    스프링에서는 객체 생성 후 DI 패턴으로 연결/설계 한다.!!!
+    프로퍼티, 빈 연계.
+    
+    BEAN에 값을 설정하는 다양한 방법
+    -LIST
+    -MAP
+    -SET
+    -PROPERTY <prop>
+    
+    LIST에 자바빈 객체를 집어 넣고 설정해서 --> 가져와 쓰면된다.
+    
+    리스트
+    <list>
+      <value>스트링 객체</value>
+    </list>
+    
+    맵
+    <map>
+      <entry>
+        <key>
+          <value>
+          </value>
+        </key>
+      </entry>
+    </map>
+    
+    프로퍼티
+    <property name="">
+      <prop>
+        <prop key=""></prop>
+      </props>
+    </property>
     
     
     
