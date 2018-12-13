@@ -1,0 +1,257 @@
+Class ArrayList<E>
+java.lang.Object
+  java.util.AbstractCollection<E>
+    java.util.AbstractList<E>
+      java.util.ArrayList<E>
+
+생성자
+ArrayList()
+Constructs an empty list with an initial capacity of ten. (리스트 생성)
+
+ArrayList(Collection<? extends E> c)
+Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator.
+(타입 지정 리스트)
+
+ArrayList(int initialCapacity)
+Constructs an empty list with the specified initial capacity.(리스트+초기 사이즈 지정)
+
+
+메소드
+boolean	add(E e)
+Appends the specified element to the end of this list. (++객체)
+
+void	add(int index, E element)
+Inserts the specified element at the specified position in this list. (++객체@)
+
+boolean	addAll(Collection<? extends E> c)
+Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's Iterator.
+(+여러타입객체)
+
+boolean	addAll(int index, Collection<? extends E> c)
+Inserts all of the elements in the specified collection into this list, starting at the specified position.
+(+여러타입객체@)
+
+void	clear()
+Removes all of the elements from this list.
+(제거)
+
+Object	clone()
+Returns a shallow copy of this ArrayList instance.
+(복사)
+
+boolean	contains(Object o)
+Returns true if this list contains the specified element.
+(있니? 1/0)
+
+void	ensureCapacity(int minCapacity)
+Increases the capacity of this ArrayList instance, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument.
+(사이즈 정하기)
+
+E	get(int index)
+Returns the element at the specified position in this list.
+(객체 가져오기@)
+
+int	indexOf(Object o)
+Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
+(위치 찾기)
+
+boolean	isEmpty()
+Returns true if this list contains no elements.
+(비었니? 1/0)
+
+Iterator<E>	iterator()
+Returns an iterator over the elements in this list in proper sequence.
+(반복)
+
+int	lastIndexOf(Object o)
+Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
+(객체 마지막@)
+
+ListIterator<E>	listIterator()
+Returns a list iterator over the elements in this list (in proper sequence).
+
+ListIterator<E>	listIterator(int index)
+Returns a list iterator over the elements in this list (in proper sequence), starting at the specified position in the list.
+(객체 가져오기@)
+
+E	remove(int index)
+Removes the element at the specified position in this list.
+(제거 @)
+
+boolean	remove(Object o)
+Removes the first occurrence of the specified element from this list, if it is present.
+(객체 제거)
+
+boolean	removeAll(Collection<?> c)
+Removes from this list all of its elements that are contained in the specified collection.
+(객체 전부 지움? 1/0)
+
+protected void	removeRange(int fromIndex, int toIndex)
+Removes from this list all of the elements whose index is between fromIndex, inclusive, and toIndex, exclusive.
+(A-B@ 까지 제거)
+
+boolean	retainAll(Collection<?> c)
+Retains only the elements in this list that are contained in the specified collection.
+(객체 중복만 keep 1/0)
+
+E	set(int index, E element)
+Replaces the element at the specified position in this list with the specified element.
+(@ 객체 바꾸기)
+
+int	size()
+Returns the number of elements in this list.
+(객체 몇개?)
+
+List<E>	subList(int fromIndex, int toIndex)
+Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.
+(A-B@ 가지 가져오기)
+
+Object[]	toArray()
+Returns an array containing all of the elements in this list in proper sequence (from first to last element).
+(배열 가져외기)
+
+<T> T[]	toArray(T[] a)
+Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array.
+
+void	trimToSize()
+Trims the capacity of this ArrayList instance to be the list's current size.
+(리스트 현재 사이즈에 맞추기)
+
+
+LINKED LIST
+java.util
+Class LinkedList<E>
+
+java.lang.Object
+  java.util.AbstractCollection<E>
+    java.util.AbstractList<E>
+      java.util.AbstractSequentialList<E>
+        java.util.LinkedList<E>
+
+생성자
+LinkedList()
+Constructs an empty list.
+
+LinkedList(Collection<? extends E> c)
+Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator.
+      
+메소드      
+boolean	add(E e)
+Appends the specified element to the end of this list.
+
+void	add(int index, E element)
+Inserts the specified element at the specified position in this list.
+
+boolean	addAll(Collection<? extends E> c)
+Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.
+
+boolean	addAll(int index, Collection<? extends E> c)
+Inserts all of the elements in the specified collection into this list, starting at the specified position.
+
+void	addFirst(E e)
+Inserts the specified element at the beginning of this list.
+
+void	addLast(E e)
+Appends the specified element to the end of this list.
+
+void	clear()
+Removes all of the elements from this list.
+
+Object	clone()
+Returns a shallow copy of this LinkedList.
+
+boolean	contains(Object o)
+Returns true if this list contains the specified element.
+
+Iterator<E>	descendingIterator()
+Returns an iterator over the elements in this deque in reverse sequential order.
+
+E	element()
+Retrieves, but does not remove, the head (first element) of this list.
+
+E	get(int index)
+Returns the element at the specified position in this list.
+
+E	getFirst()
+Returns the first element in this list.
+
+E	getLast()
+Returns the last element in this list.
+
+int	indexOf(Object o)
+Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
+
+int	lastIndexOf(Object o)
+Returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
+
+ListIterator<E>	listIterator(int index)
+Returns a list-iterator of the elements in this list (in proper sequence), starting at the specified position in the list.
+
+boolean	offer(E e)
+Adds the specified element as the tail (last element) of this list.
+
+boolean	offerFirst(E e)
+Inserts the specified element at the front of this list.
+
+boolean	offerLast(E e)
+Inserts the specified element at the end of this list.
+
+E	peek()
+Retrieves, but does not remove, the head (first element) of this list.
+
+E	peekFirst()
+Retrieves, but does not remove, the first element of this list, or returns null if this list is empty.
+
+E	peekLast()
+Retrieves, but does not remove, the last element of this list, or returns null if this list is empty.
+
+E	poll()
+Retrieves and removes the head (first element) of this list.
+
+E	pollFirst()
+Retrieves and removes the first element of this list, or returns null if this list is empty.
+
+E	pollLast()
+Retrieves and removes the last element of this list, or returns null if this list is empty.
+
+E	pop()
+Pops an element from the stack represented by this list.
+
+void	push(E e)
+Pushes an element onto the stack represented by this list.
+
+E	remove()
+Retrieves and removes the head (first element) of this list.
+
+E	remove(int index)
+Removes the element at the specified position in this list.
+
+boolean	remove(Object o)
+Removes the first occurrence of the specified element from this list, if it is present.
+
+E	removeFirst()
+Removes and returns the first element from this list.
+
+boolean	removeFirstOccurrence(Object o)
+Removes the first occurrence of the specified element in this list (when traversing the list from head to tail).
+
+E	removeLast()
+Removes and returns the last element from this list.
+
+boolean	removeLastOccurrence(Object o)
+Removes the last occurrence of the specified element in this list (when traversing the list from head to tail).
+
+E	set(int index, E element)
+Replaces the element at the specified position in this list with the specified element.
+
+int	size()
+Returns the number of elements in this list.
+
+Object[]	toArray()
+Returns an array containing all of the elements in this list in proper sequence (from first to last element).
+
+<T> T[]	toArray(T[] a)
+Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array.       
+        
+        
+
