@@ -1,0 +1,57 @@
+http://tcpschool.com/java/java_collectionFramework_stackQueue
+
+STACK
+
+java.util
+Class Stack<E>
+
+java.lang.Object
+  java.util.AbstractCollection<E>
+    java.util.AbstractList<E>
+      java.util.Vector<E>
+        java.util.Stack<E>
+
+생성자
+Stack()
+Creates an empty Stack.
+
+메소드
+boolean	empty()
+Tests if this stack is empty.
+
+E	peek()
+Looks at the object at the top of this stack without removing it from the stack.
+
+E	pop()
+Removes the object at the top of this stack and returns that object as the value of this function.
+
+E	push(E item)
+Pushes an item onto the top of this stack.
+
+int	search(Object o)
+Returns the 1-based position where an object is on this stack.
+
+
+QUEUE
+
+java.util
+Interface Queue<E>
+
+메소드
+boolean	add(E e)
+Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+
+E	element()
+Retrieves, but does not remove, the head of this queue.
+
+boolean	offer(E e)
+Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions.
+
+E	peek()
+Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+
+E	poll()
+Retrieves and removes the head of this queue, or returns null if this queue is empty.
+
+E	remove()
+Retrieves and removes the head of this queue.
