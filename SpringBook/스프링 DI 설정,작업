@@ -21,11 +21,16 @@ SPRING DI
      public Assembler(){
         enc=new FastEncryptor();
         //enc를 변경해도 Encryptor객체를 DI로 전달받는 코드는 영향받지 않는다.
-        
+   
+  -다른 클래서의 객체로 참조 가능
+  -참조하는 클래스 메서드를 @Override해서 fake객체로 그 메서드를 가져다 구현해서 기존 클래스 TESTING 가능
+  (참조하는 클래스 메소드가 미구현이어도 그것에 대한 제약 없이 기존 클래스를 태스트할 수 있다. 
  
  생성자 방식 VS 프로퍼티 설정 방식(더 많이 씀)
-  1 생성자로 받아서 설정  (장점- 객체 생성시 파람으로 전부 받을 수 있다)
+  1 생성자로 받아서 설정  (장점- 객체 생성시 파람으로 의존하는 개체 전부 받고 사용 가능한 상태 확인 가능-정상적 생성시 작동)
+ ** new 기존클래스(DI객체)
   2 setClass 메소드를 통해서 설정. (장점- 메소드 이름 자체로 어떤 타입의 객체인지 알 수 있다)
+ ** 기존클래스.setDI클래스명(DI객체)
   
   
  스프링이란??
@@ -35,7 +40,7 @@ SPRING DI
     -build()로 생성
     -bean property ref="의존하는 객체 클래스"
   
-  컨테이너에 저장된 객체를 가져다 쓰기 위해서
+  스프링은 객체를 생성하고 연결해주는 DI 컨테이너이다. 
   
   
   DI- ApplicationContext로 하는 것
@@ -53,14 +58,22 @@ SPRING DI
     -아이디 안주면 자동 생성 - 패키지, 클래시명 다 포함되고 #숫자까지 넣어져 설정.
    
    
-   생성자로 <constructor-args>
+   생성자로 설정 <constructor-args>
     -ID, PWD 설정해서 객체 생성도 가능하다. 
     -new User("id","pwd") 와 같다.
     -객체 아닌 integer, String 등 일반 값 설정시 <value> 사용
     
+    
+    프로퍼티로 설정 <property>
     Threshold
     -메소드에 값 설정도 가능 setThreshold(int integ);
-    -클래스의 객체 생성시 자동으로 setMethod로 5를 준다 <property name="threshold vlaue="5"/>
+    -클래스의 객체 생성시 자동으로 setMethod로 5를 준다 <property name="threshold vaㅣue="5"/>
+    
+    ***
+    Bean 설정 <property name="BeanId" ref=""/>
+    다수의 Bean 설정 <property name="BeanId"><list><ref bean=""/></list></property>
+    메소드에 Param 전달 <property name="MethodName" value="Param"/>
+    ***
     
     스프링에서는 객체 생성 후 DI 패턴으로 연결/설계 한다.!!!
     프로퍼티, 빈 연계.
@@ -94,13 +107,49 @@ SPRING DI
         <prop key=""></prop>
       </props>
     </property>
+ 
+ 
+ Namespace 사용해서 생성자 설정
+  constructor-args -- c:id (파라미터 이름 모를 때 생성자 파라미터 받는 순서 c:_0 c:_1
+  property -- p: , **property list, map, set은 namespace로 설정 불가
+    config.xml / config-with-namespace.xml 비교
+    
+ import로 여러 설정 파일 조합   
+  방법 1 GenericXmlApplicationContext("classpath: 여러 개 사용
+  방법 2 <beans xmlns...> <import resource = "classpath:/path/*.xml"/> </beans> 
     
     
+자바 코드를 이용한 DI 설정  
+  @Configuration //클래스를 스프링 DI 설정으로 사용
+  public class Config{ 
+    @Bean //메서드 리턴 값을 *빈 객체로* 사용 . 메소드 이름으로 ID 설정됨.
+    public MethodClass method()
+        return new 클래스("K","V");    
+  스프링 컨테이너에 클래스로 생성된 객체를 넣는다.
+   --->
+    이걸로 할시에는 AnnotationConfigApplicationContext(Config.class) 사용
+    
+    @Bean (name="user"2) //이름 변경
+  
+  @import(ConfigSensor.class) 합치기 
+    
+  xml+java 같이 사용 - xml에서 자바 가져오기
+   ConfigSensor.java 필요   --- java
+   빈에서 <context:annotation-config/> <bean class="ConfigSensor"/> --- xml
+   
+  xml+java -java에서 xml 가져오기
+    @ImportResource("")
     
     
+ 객체 생성을 위한
+    -static 생성
+    -FactoryBean 사용
+    <bean factory-method=instance>
     
-    
-    
+   FactoryBean Interface 사용무
+   
+   
+  
     
     
     
