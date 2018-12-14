@@ -13,7 +13,7 @@ TEAMVIEWER~~연동.
 
 <context:annotation-config>
 Annotation 자동 등록 4가지
-@Service @Repository @Configuration --자동 등록
+@Controller @Service @Repository @Component --Annotaiont은 자동 등록된다. 
 
 @Autowired @Resource @Inject
 -자동 등록 AnnotationMapHandler
@@ -64,5 +64,79 @@ Exception
   빈에 @Qualifier("order")로 불러오기
   
   +getBean(3가지 생성자 받는 방법) 이 있다. 
-   
-
+ 
+ ======================================================
+ 
+스프링 컨테이너
+  -생성했다 사용하고 닫아서 종료(빈 객체 제거)할 수 있다. 
+  -MVC에서는 컨테이너 개념이 없다.
+  
+기본적인 설정
+    1 컨테이너 설정
+    GenericXmlApplicationContext ctx= new GenericXmlApplicationContext();
+    2 메타 정보 제공 (패스 설정)
+    ctx.load("classpath:config.xml");
+    3 빈 객체 생성
+    ctx.refresh();
+    4 컨테이너 사용
+    AuthenticationService authSvc=ctx.getBean("authenticationService",AuthenticationService.class);
+    5 컨테이너 종료
+    ctx.close();
+    
+ 컨테이너간 부모 자식 설정도 가능하다. 
+ 
+  ======================================================
+ 
+ 
+ 빈 라이프 사이클 (빈 관여 월할시)
+ 
+  -인터페이스 상속 받아 빈 구현
+  -특정 메서드 호출하라고 지정
+  -@PostConstruct @PreDestroy --기본설정에서 설정. 
+ 
+ 1 스프링 컨테이너가 빈 객체 생성
+ 2 프로퍼티 설정
+ 3 초기화 전 처리
+ 4 초기화
+ 5 처리/사용
+ 6 소멸
+ 
+ 메소드 처리/@ 처리/ 생성자 처리 전부 가능. 
+ 빈으로 등록시 afterPropertiesSet()으로 초기화하고 destroy()로 소멸 진행하는 프로세스를 거친다. 
+ 
+ ======================================================
+ 
+ 자기 객체가 저장된 컨테이너에 접근
+1  ApplicationContextAware --더 사용
+2  BeanAware
+  
+  컨테이너에 접근.
+  
+ 빈 객체의 범위
+ 
+  -싱글톤이면 10번 전부 같은 타입- 싱글톤- 빈 객체 한 개만 존재 ... SPRING에서 DEFAULT가 scope="singleton"
+  프로토타입이면 전부 틀린 형태 ...   
+  
+  -프로토타입 객체 생성 10번 반복시 -- 매번 새로운 객체로 -- PARAM으로 지정한 OrdNumber를 제외하고.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
