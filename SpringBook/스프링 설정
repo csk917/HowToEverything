@@ -1,0 +1,3 @@
+자바로 빈 설정하려면
+  -@Configuration @Bean
+  -그리고 AnnotationConfigApplicationContext 클래스 필요!!
