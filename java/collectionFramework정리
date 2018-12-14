@@ -1,5 +1,32 @@
-인간 -- DEBUGGING 
 
+제네릭 사용
+ArrayList<String>-- 제네릭 사용해서 ?로 T E 등으로 하면 어떤 데이터로든 받을 수 있고
+<String> <Integer>등오로 타입을 설정하면 해당 타입 참조값만 저장되게끔 설정한다. 
+캐스팅 해야하는 수고 덜어줌.
+
+자료(저장)구조
+Collection, Map
+
+List--> Array, Linked 중복 가능, (메모리)순서 있음
+  Array- 단방향
+  LinkedList- 양방향. 스택, 큐 등을 만듬.
+
+Set--> Hash, Tree 중복 불가, (메모리)순서 없음
+  Hash- 순서 예측 불가
+  LinkedHash- 최근 순서로 접근
+  Tree- 정렬로 보관
+  
+Map--> Hash, Tree K:V 형태
+  HashMap- 순서 보장 X
+  Hashtable- 동기화 지원, null 불가
+  Tree- 정렬로 k:v 저장
+  LinkedHashMap- 연결 리스트 유지
+
+
+
+
+
+인간 -- DEBUGGING 
 
 QUEUE EX 1 --debugging 숙제~~~~~ 
 view 3가지 형태 매번 생각 1 메모리 그림 2 화면 3 텍스트 설명
