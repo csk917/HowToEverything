@@ -58,8 +58,11 @@ Exception
        
        -regex 패턴과 연계
 
+  XML
+  빈에 <qualifier value="order"/> 설정하고 값을 넣고. 
+  JAVA
+  빈에 @Qualifier("order")로 불러오기
   
-  
-  
+  +getBean(3가지 생성자 받는 방법) 이 있다. 
    
 
