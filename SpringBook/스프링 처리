@@ -12,42 +12,72 @@ TEAMVIEWER~~연동.
   
 
 <context:annotation-config>
+VS
+기존에는 자바빈을 만들면 빈 ID CLASS 하나하나 만들어서 .xml에 등록해주어야 했다
+
 Annotation 자동 등록 4가지
-@Controller @Service @Repository @Component --Annotaiont은 자동 등록된다. 
+@Controller @Service @Repository @Component --Annotaiont은로 지정하면 context:annotation-config가 xml파일에 class,id를 자동 등록한다. 
+VS
+기존에는 수동 설정으로 했다. 
+
 
 @Autowired @Resource @Inject
 -자동 등록 AnnotationMapHandler
+VS
+등록된 빈을 자바에서 가져다 선언하고 쓰기 (set 메소드로 등록할 필요 없이)
 
 Annotationt 전 처리기 자동 등록됨.
 @Qualifier도 등록됨
 
-5.2 생성자, 메소드, 변수에 @Autowired 의존 자동 설정 가능.
+5.2 생성자, 메소드, 또는 변수에 @Autowired 의존 자동 설정 가능.
   -property tag 로 setPropertyName해서 자동 설정했었는데-->
   이제 빈이 있으면 @Autowired로 자동 설정 가능하다. 
   -타입을 설정해주면 다형성에 의해 문제없이 설정가능.
+   
    @Autowired
    public void setErpClientFactory(ErpClientFactory erpClientFactory){
     this.erpClientFactory=erpClientFactory;
    }
+   //메소드 사용
    @Autowired
    public void init(객체1, 객체2){
     this.객체1
     this.객체2
+   
+   //생성자 사용
+   @Autowired
+   public OrderService(ErpClientFactory erpClientFactory-객체1, SearchClientFactory searchClientFactory=객체2)
     
 Exception
   -스프링 빈이 존재하지 않는데 선언했을 경우
   -단 2개 같은 타입 빈이 있을 때 @Qualifer로 지정된 빈을 수동 설정하면 오류 X
   
+  
+  
   @Qualifer
     동일한 타입 빈 중 지정.
-    
- ***@Autowired 는 타입!을 기준으로 @Resource는 이름/ID! 을 기준으로 빈을 찾는다
+  VS
+  원래는 자동 설정으로 되었는데 같은 클래스를 참조했으면 NoUniqueBeanDefinitionException이 발생했다. 
+        사용방법
+            1. <bean ><qualifer value="name"/> 설정
+            2. 자바에 @Qualifer("name"/>설정
+            
  
- @inject
+ 
+ ***@Autowired 는 타입!을 기준으로 VS @Resource는 이름/ID! 을 기준으로 빈을 찾는다
+ 
+ @Resource(name="beanName")  --> 가져오는 Bean ID 수동 설정
+ VS
+ 원래는 자동 설정
+ 
+ 
+ @inject- DI 를 위해 만들었다. 
   쓰려면 javax.inject dependency 설정 필요. 
   
-  자바 코드 기반 Config. --- 아니면 component scan으로 자동 설정.
-  @Component가 등록된 건 자동 등록된다. <context:component-scan-base-package>설정하면. 
+  
+ @Component- 엄격한 PATH 규칙이 정해져있을 때 사용해서 탐색 범위를 조정할 수 있다.
+   -자바 코드 기반 Config. --- 아니면 component scan으로 자동 설정.
+   -@Component가 등록된 건 자동 등록된다. <context:component-scan-base-package>설정하면. 
   
   자동으로 객체 생성 등록시 @Componenet public class ProductService{} 소문자로 빈 이름이 등록된다.
  
@@ -57,12 +87,12 @@ Exception
        -exclude-filter 등록 X Dao
        
        -regex 패턴과 연계
+  VS
+  기존에는 그냥 모두 탐색
 
-  XML
-  빈에 <qualifier value="order"/> 설정하고 값을 넣고. 
-  JAVA
-  빈에 @Qualifier("order")로 불러오기
-  
+
+=====================================================
+
   +getBean(3가지 생성자 받는 방법) 이 있다. 
  
  ======================================================
@@ -106,7 +136,7 @@ Exception
  
  ======================================================
  
- 자기 객체가 저장된 컨테이너에 접근
+ 자기 객체가 저장된 컨테이너에 접근 -- 로그에 빈 이름 남기기. 
 1  ApplicationContextAware --더 사용
 2  BeanAware
   
@@ -118,6 +148,8 @@ Exception
   프로토타입이면 전부 틀린 형태 ...   
   
   -프로토타입 객체 생성 10번 반복시 -- 매번 새로운 객체로 -- PARAM으로 지정한 OrdNumber를 제외하고.
+  
+  
   
   
   
