@@ -16,7 +16,7 @@ Set--> Hash, Tree 중복 불가, (메모리)순서 없음
   LinkedHash- 최근 순서로 접근
   Tree- 정렬로 보관
   
-Map--> Hash, Tree K:V 형태
+Map--> Hash, Tree K:V, (하나의 클래스에서 Object, Object) 형태
   HashMap- 순서 보장 X
   Hashtable- 동기화 지원, null 불가
   Tree- 정렬로 k:v 저장
