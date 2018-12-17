@@ -1,0 +1,39 @@
+Environment
+
+외부 입력 값으로 설정 변경. Emnvironment
+  -스프링 컨테인너에 getEnvironment --> 객체 얻는다.
+  -프로필을 선택 >> 가져다 쓴다.
+  
+Enviornment 용도
+  -Property 값 제공.
+  -컨테이너 생성 - getEnv - getProp - print
+  -주요 메소드 - boolean containsProperty(String key)
+  -String getProperty(String key), String getPropert(String key, String defaultValue)
+  
+PropertySource 추가
+  -jdbc, url, user, pwd
+  -JAVA @Configuration @PropertySource( value={"propertypath"})
+ 
+Environ. 빈에서 사용 >> EnvAware필요!
+  -EnvAware 상속 받아 Env 객체 만들어 설정. Env에 getProperty 붙여서 꺼내 쓸 때 env사용. 
+  -클래스 빈으로 등록
+  - || Env, @Autowired를 붙여서 쓸 수 있다. 
+  - 프로퍼티로 정의된 내용을 ConnectionProvider.set--- 가져다 쓸 수 있다
+  -설정 유동성 높이기
+  ||
+  <context:property-placeholder location="propertypath> <bean id="connProvider" class="">
+  -- XML로 하기 보다는 property 파일 권유!!!
+  
+  두 개 xml이 프로퍼티 파일을 쓰면 익셉션 발생한다. 별도의 XML에서 프로퍼티 파일을 모아서 설정하고 그걸로
+  다른 빈에서 사용하게끔 설정해야 한다 ***
+  ||
+  자바에서 @PropertySources @Bean 자바로 설정해서 사용도 가능. @Configuration @Value @Bean >> 선택
+  
+프로필 이용 설정. 
+  -프로필 속성에 설정해서 사용. 
+  
+MessageSource이용 국제화 
+  -property에 경로 지정 >> 등록되어 있는 .properties파일에서 쓰기. 
+  -프로퍼티 defaultEncoding 필수 >> messageSource
+ 
+ReloadableResourceBundleMessageSource
