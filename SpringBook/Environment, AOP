@@ -1,0 +1,101 @@
+Environment
+
+외부 입력 값으로 설정 변경. Emnvironment
+  -스프링 컨테인너에 getEnvironment --> 객체 얻는다.
+  -프로필을 선택 >> 가져다 쓴다.
+  
+Enviornment 용도
+  -Property 값 제공.
+  -컨테이너 생성 - getEnv - getProp - print
+  -주요 메소드 - boolean containsProperty(String key)
+  -String getProperty(String key), String getPropert(String key, String defaultValue)
+  
+PropertySource 추가
+  -jdbc, url, user, pwd
+  -JAVA @Configuration @PropertySource( value={"propertypath"})
+ 
+Environ. 빈에서 사용 >> EnvAware필요!
+  -EnvAware 상속 받아 Env 객체 만들어 설정. Env에 getProperty 붙여서 꺼내 쓸 때 env사용. 
+  -클래스 빈으로 등록
+  - || Env, @Autowired를 붙여서 쓸 수 있다. 
+  - 프로퍼티로 정의된 내용을 ConnectionProvider.set--- 가져다 쓸 수 있다
+  -설정 유동성 높이기
+  ||
+  <context:property-placeholder location="propertypath> <bean id="connProvider" class="">
+  -- XML로 하기 보다는 property 파일 권유!!!
+  
+  두 개 xml이 프로퍼티 파일을 쓰면 익셉션 발생한다. 별도의 XML에서 프로퍼티 파일을 모아서 설정하고 그걸로
+  다른 빈에서 사용하게끔 설정해야 한다 ***
+  ||
+  자바에서 @PropertySources @Bean 자바로 설정해서 사용도 가능. @Configuration @Value @Bean >> 선택
+  
+프로필 이용 설정. 
+  -프로필 속성에 설정해서 사용. 
+  
+MessageSource이용 국제화 
+  -property에 경로 지정 >> 등록되어 있는 .properties파일에서 쓰기. 
+  -프로퍼티 defaultEncoding 필수 >> messageSource
+ 
+스프링 확장포인트
+  -객체 생성전에 properties에 있는 파일을 우선 설정한다. 
+  -스프링 설정 변경시 BeanFactoryPostProcessor 필요함. (원래 자동설ㅈ으오 됨)
+  -BeanPostProcessor-이미 만들어진 것 변경. >> 빈 초기화 전후
+  -두 개 이상 postprocessor?? >> Ordered Interfaceㅗ 순서 정할 수 있다. 
+  
+  -전송 된 값 대부분은 String 단 Spring은 기본 데이터 탑
+  -전송된 값을 넣으려면 자바빈 만들어서 URL 넣을 수 있다. 
+  -CUSTOM- 직접 설정 필요. !!!
+  
+  
+ 전송, 타입 변환이 있으면 Editor 
+ 
+ 
+ ================================================================
+ 
+ AOP (Interceptory 와 유사 -- 로깅, 트렌잭션 보안과 같은 !공통 기능!) VS 비즈니스 기능
+  -cross-cutting concern(AOP) vs core concern
+  -공통 동작시 필요한 로직. 
+  -중복 코드 X, 설정에 의해  메소드가 ㅡ들어간다. 
+  -메소드에 넣어서 동작 될 때만 호출되어 쓰여진다. 
+ 
+ WEAVING 사용 세가지 방식
+  -컴파일, 클래스 로딩시, 런타입시
+ 
+ 실행 순서 
+ 
+ client     >> proxy   >> crossCuttingConcern >> coreConcern
+ 
+ business() >> callModule() >> business() >> callModule()
+ 
+ AOP 정리
+ ==
+ 
+ Advice가 부가 기능을 담은 구현체이고 Advice를 적용할 대상(메소드)를 선별하는 방법이 포인트컷.
+ 그리고 부여할 대상의 선택이 타겟 (핵심 기능인 Service에 대해 말한다.)
+ 이렇게 핵심기능에 부가되어 의미를 갖게되는 모듈 이름이 에스펙트이다. 
+ 
+ 적용되는 타겟의 요청을 대신 받아주는 램핑 오브젝트가 프록시다. 타깃 메소드 실행전후에 실행된다.
+ 정해진 객체에 Aspect가 적용되면서 새로운 프록시 객체를 생성하는 과정은 위빙(weaving)
+ 
+ 예) @Around (advice) "execution (포인트컷 지정자(*com.blogcode.board (타깃이되는 메소드)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
