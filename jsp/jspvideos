@@ -1,0 +1,26 @@
+Categorized image words
+  basic function-Web Application, based on input
+  jsp? works in web server, java EE, low-level
+  jsp file-java with html, dynamic
+  processing- on server
+  example- jsp expression included, object in html, 
+  tool- right click source, rendering response with html
+  expresssions- expression, scriplet, declaration
+  xml- deployment descriptor 
+  dispatcher servlet, bean 
+
+Movie Ticket
+
+EVENT
+LIST.jsp
+  JSP- forEach List item with param name value
+  All item use enveloped with EL java
+  JSTL tag, EL for dynamic data change
+  DEBUG- imports / title / category / list / search form
+
+MODIFY.jsp
+  JSP-hidden input
+  data type, name, id, value, class
+  
+  
+  
