@@ -35,4 +35,17 @@ AOP 프록시 객체 생성 방식 설정
   -within (특정 클래스 안에 모든 메서드)
   -스프링 컨테이너에 등록된 어떠한 빈이 동작할 때 AOP 동작 -- within(패키지명) || execution(패키지명) || bean
   -하나 이상의 PointCut 조합도 가능. 
-  -
+
+Advice 적용 순서
+  -공통 모듈 우선순위 설정 가능 implements Ordered getOrder(3) || @Order(3) || xml로 order="3"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
