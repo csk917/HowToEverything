@@ -1,0 +1,7 @@
+기본, 뷰, XML/JSON 연결, 업로드, 소켓
+  설정 Deployment Descriptor- 웹프로젝트로 생성된 걸 확인 가능
+  -artifactId- 웹에서는 시작점이 된다. 
+  
+servlet-context
+  -공유 resources
+  -설정 정보 실행
