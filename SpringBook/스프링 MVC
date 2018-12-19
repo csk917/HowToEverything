@@ -5,3 +5,36 @@
 servlet-context
   -공유 resources
   -설정 정보 실행
+
+****Sevlet 3.0.1 이후 부터는 TomCat v9.0필요!!
+
+The strategy interface HandlerAdapter takes the role of invoking handler methods selected by some HandlerMapping.
+
+If a HandlerMappingselects a controller, but not a specific method, then the HandlerAdapter also selects the handler method.
+
+DispatcherServlet invokes controllers through HandlerAdapter strategy objects.
+
+This allows for different types of controllers use different method invokation strategies. and URL mapping strategies are possible.
+
+Installing new types of handler invokation strategies requires an appropriate HandlerAdapter bean to be registered.
+
+When multiple HandlerAdapter are installed, the DispatcherServlet will invoke all to check the first that supports the handler object provided by the HandlerMappingstrategy. The first HandlerAdapter that supports the handler object (controller or method) is used to invoke the handler.
+
+Spring MVC supports several types of controllers, including: annotation defined controllers (with @Controller), the WebFlow FlowExecutor etc.
+
+AnnotationMethodHandlerAdapter
+
+AnnotationMethodHandlerAdapter adapts HTTP requests to handler methods annotated with @RequestMapping. It introspects required input arguments for handlers, and interprets output values. This the HandlerAdapter configured by default.
+
+The AnnotationMethodHandlerAdapter can be used with controller with multiple handler methods in a variety of powerful ways.
+
+============
+<mvc annotation-driven>으로 자동화
+스프링- 모델 , 맵을 더 사용 mav사용--
+viewResolver 설정으로 JSP 또는 tiles 또는 nonHTML 정보로 보여줄 수 있다. 
+
+
+
+
+
+
