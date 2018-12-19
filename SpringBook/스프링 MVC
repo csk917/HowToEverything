@@ -77,8 +77,11 @@ The AnnotationMethodHandlerAdapter can be used with controller with multiple han
 스프링- 모델 , 맵을 더 사용 mav사용--
 viewResolver 설정으로 JSP 또는 tiles 또는 nonHTML 정보로 보여줄 수 있다. 
 
-
-
-
-
-
+KEY
+    처리 요청,응답 컨텐츠 타입 제한
+    consumes - 요청 제한 application/json 타입으로만 제한하기
+    커멘드 객체 사용법: boolean 값으로 전송시 boolean type으로 받기 (기본 데이터 범주) //(*날짜 불가)
+    
+    
+    
+    
