@@ -29,7 +29,7 @@ AnnotationMethodHandlerAdapter adapts HTTP requests to handler methods annotated
 The AnnotationMethodHandlerAdapter can be used with controller with multiple handler methods in a variety of powerful ways.
 
 ============
-<mvc annotation-driven>으로 자동화
+<mvc annotation-driven>으로 자동화  HandlerMappipng, HandlerAdapter 설정
 스프링- 모델 , 맵을 더 사용 mav사용--
 viewResolver 설정으로 JSP 또는 tiles 또는 nonHTML 정보로 보여줄 수 있다. 
 
