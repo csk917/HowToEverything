@@ -1,0 +1,36 @@
+public interface HttpServletResponse
+extends ServletResponse
+
+메소드 
+ void	addCookie(Cookie cookie) 
+          Adds the specified cookie to the response.
+ void	addDateHeader(java.lang.String name, long date) 
+          Adds a response header with the given name and date-value.
+ void	addHeader(java.lang.String name, java.lang.String value) 
+          Adds a response header with the given name and value.
+ void	addIntHeader(java.lang.String name, int value) 
+          Adds a response header with the given name and integer value.
+ boolean	containsHeader(java.lang.String name) 
+          Returns a boolean indicating whether the named response header has already been set.
+ java.lang.String	encodeRedirectUrl(java.lang.String url) 
+          Deprecated. As of version 2.1, use encodeRedirectURL(String url) instead
+ java.lang.String	encodeRedirectURL(java.lang.String url) 
+          Encodes the specified URL for use in the sendRedirect method or, if encoding is not needed, returns the URL unchanged.
+ java.lang.String	encodeUrl(java.lang.String url) 
+          Deprecated. As of version 2.1, use encodeURL(String url) instead
+ java.lang.String	encodeURL(java.lang.String url) 
+          Encodes the specified URL by including the session ID in it, or, if encoding is not needed, returns the URL unchanged.
+ void	sendError(int sc) 
+          Sends an error response to the client using the specified status code and clearing the buffer.
+ void	sendError(int sc, java.lang.String msg) 
+          Sends an error response to the client using the specified status.
+ void	sendRedirect(java.lang.String location) 
+          Sends a temporary redirect response to the client using the specified redirect location URL.
+ void	setDateHeader(java.lang.String name, long date) 
+          Sets a response header with the given name and date-value.
+ void	setHeader(java.lang.String name, java.lang.String value) 
+          Sets a response header with the given name and value.
+ void	setIntHeader(java.lang.String name, int value) 
+          Sets a response header with the given name and integer value.
+ void	setStatus(int sc) 
+          Sets the status code for this response.
