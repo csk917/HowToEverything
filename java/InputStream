@@ -1,0 +1,56 @@
+java.io
+Class FileInputStream
+java.lang.Object
+  java.io.InputStream
+    java.io.FileInputStream
+    
+ 설명
+ A FileInputStream obtains input bytes from a file in a file system. What files are available depends on the host environment.
+FileInputStream is meant for reading streams of raw bytes such as image data. For reading streams of characters, consider using FileReader.
+
+
+생성자
+FileInputStream(File file)
+Creates a FileInputStream by opening a connection to an actual file, the file named by the File object file in the file system.
+(실제 파일에 접근)
+
+FileInputStream(FileDescriptor fdObj)
+Creates a FileInputStream by using the file descriptor fdObj, which represents an existing connection to an actual file in the file system.
+
+FileInputStream(String name)
+Creates a FileInputStream by opening a connection to an actual file, the file named by the path name name in the file system.
+(경로 받아서 파일 접근)
+
+
+
+메소드
+int	available()
+Returns an estimate of the number of remaining bytes that can be read (or skipped over) from this input stream without blocking by the next invocation of a method for this input stream.
+(inputstream 나머지 메모리값)
+
+void	close()
+Closes this file input stream and releases any system resources associated with the stream.
+(닫기)
+
+protected void	finalize()
+Ensures that the close method of this file input stream is called when there are no more references to it.
+
+FileChannel	getChannel()
+Returns the unique FileChannel object associated with this file input stream.
+
+FileDescriptor	getFD()
+Returns the FileDescriptor object that represents the connection to the actual file in the file system being used by this FileInputStream.
+
+int	read()
+Reads a byte of data from this input stream.
+(스트림 데이터 읽기)
+
+int	read(byte[] b)
+Reads up to b.length bytes of data from this input stream into an array of bytes.
+
+int	read(byte[] b, int off, int len)
+Reads up to len bytes of data from this input stream into an array of bytes.
+
+long	skip(long n)
+Skips over and discards n bytes of data from the input stream.
+(스트림에서 데이터 n량 넘기기)
