@@ -1,0 +1,20 @@
+
+https://docs.spring.io/spring/docs/3.0.0.M4/reference/html/ch15s02.html
+
+Bean in webapplication context
+  -Controllers	Form the C part of the MVC.
+  -Handler Mappings	Handle the execution of a list of pre-processors and post-processors and controllers that will be executed if
+  they match certain criteria (for example, a matching URL specified with the controller).
+  -view resolvers	Resolves view names to views.
+  -locale resolver	A locale resolver is a component capable of resolving the locale a client is using, in order to be able to offer 
+  internationalized views
+  -Theme resolver	A theme resolver is capable of resolving themes your web application can use, for example, to offer personalized layouts
+  -multipart file resolver	Contains functionality to process file uploads from HTML forms.
+  -handler exception resolvers	Contains functionality to map exceptions to views or implement other more complex exception handling code
+
+
+DispatcherServlet initialization parameters
+  -contextClass	Class that implements WebApplicationContext, which instantiates the context used by this servlet. 
+  By default, the XmlWebApplicationContext is used.
+  -contextConfigLocation	String that is passed to the context instance (specified by contextClass) to indicate where context(s) can be found. The string consists potentially of multiple strings (using a comma as a delimiter) to support multiple contexts. In case of multiple context locations with beans that are defined twice, the latest location takes precedence.
+  -namespace	Namespace of the WebApplicationContext. Defaults to [servlet-name]-servlet.
