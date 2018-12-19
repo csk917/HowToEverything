@@ -1,0 +1,44 @@
+java.lang.Object
+  org.springframework.util.FileCopyUtils
+  
+  설명
+  Simple utility methods for file and stream copying.
+  All copy methods use a block size of 4096 bytes, and close all affected streams when done.
+  A variation of the copy methods from this class that leave streams open can be found in StreamUtils.
+  
+  필드
+  static int	BUFFER_SIZE
+The default buffer size used when copying bytes.
+
+
+  생성자
+  FileCopyUtils() 
+  
+  
+  메소드
+  static void	copy(byte[] in, java.io.File out)
+Copy the contents of the given byte array to the given output File.
+
+static void	copy(byte[] in, java.io.OutputStream out)
+Copy the contents of the given byte array to the given OutputStream.
+
+static int	copy(java.io.File in, java.io.File out)
+Copy the contents of the given input File to the given output File.
+
+static int	copy(java.io.InputStream in, java.io.OutputStream out)
+Copy the contents of the given InputStream to the given OutputStream.
+
+static int	copy(java.io.Reader in, java.io.Writer out)
+Copy the contents of the given Reader to the given Writer.
+
+static void	copy(java.lang.String in, java.io.Writer out)
+Copy the contents of the given String to the given output Writer.
+
+static byte[]	copyToByteArray(java.io.File in)
+Copy the contents of the given input File into a new byte array.
+
+static byte[]	copyToByteArray(java.io.InputStream in)
+Copy the contents of the given InputStream into a new byte array.
+
+static java.lang.String	copyToString(java.io.Reader in)
+Copy the contents of the given Reader into a String.
