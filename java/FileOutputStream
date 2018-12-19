@@ -1,0 +1,50 @@
+java.io
+Class FileOutputStream
+java.lang.Object
+  java.io.OutputStream
+    java.io.FileOutputStream
+    
+ 설명
+ A file output stream is an output stream for writing data to a File or to a FileDescriptor. 
+ Whether or not a file is available or may be created depends upon the underlying platform. Some platforms, in particular, allow a file to be opened for writing by only one FileOutputStream (or other file-writing object) at a time. 
+ In such situations the constructors in this class will fail if the file involved is already open.
+ 
+
+생성자
+ FileOutputStream(File file)
+Creates a file output stream to write to the file represented by the specified File object.
+
+FileOutputStream(File file, boolean append)
+Creates a file output stream to write to the file represented by the specified File object.
+
+FileOutputStream(FileDescriptor fdObj)
+Creates a file output stream to write to the specified file descriptor, which represents an existing connection to an actual file in the file system.
+
+FileOutputStream(String name)
+Creates a file output stream to write to the file with the specified name.
+
+FileOutputStream(String name, boolean append)
+Creates a file output stream to write to the file with the specified name.
+
+
+메소드
+void	close()
+Closes this file output stream and releases any system resources associated with this stream.
+
+protected void	finalize()
+Cleans up the connection to the file, and ensures that the close method of this file output stream is called when there are no more references to this stream.
+
+FileChannel	getChannel()
+Returns the unique FileChannel object associated with this file output stream.
+
+FileDescriptor	getFD()
+Returns the file descriptor associated with this stream.
+
+void	write(byte[] b)
+Writes b.length bytes from the specified byte array to this file output stream.
+
+void	write(byte[] b, int off, int len)
+Writes len bytes from the specified byte array starting at offset off to this file output stream.
+
+void	write(int b)
+Writes the specified byte to this file output stream.
