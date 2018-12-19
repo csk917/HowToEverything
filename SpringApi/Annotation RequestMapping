@@ -1,0 +1,35 @@
+
+org.springframework.web.bind.annotation
+
+Annotation Type RequestMapping
+
+@Target(value={METHOD,TYPE})
+ @Retention(value=RUNTIME)
+ @Documented
+public @interface RequestMapping
+
+Elements
+
+java.lang.String[]	consumes
+The consumable media types of the mapped request, narrowing the primary mapping.
+
+java.lang.String[]	headers
+The headers of the mapped request, narrowing the primary mapping.
+
+RequestMethod[]	method
+The HTTP request methods to map to, narrowing the primary mapping: GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE.
+
+java.lang.String	name
+Assign a name to this mapping.
+
+java.lang.String[]	params
+The parameters of the mapped request, narrowing the primary mapping.
+
+java.lang.String[]	path
+The path mapping URIs (e.g.
+
+java.lang.String[]	produces
+The producible media types of the mapped request, narrowing the primary mapping.
+
+java.lang.String[]	value
+The primary mapping expressed by this annotation.
