@@ -1,0 +1,53 @@
+javax.servlet.http
+Class HttpServletResponseWrapper
+java.lang.Object
+  javax.servlet.ServletResponseWrapper
+    javax.servlet.http.HttpServletResponseWrapper
+ 
+ 
+
+void	addCookie(Cookie cookie)
+The default behavior of this method is to call addCookie(Cookie cookie) on the wrapped response object.
+void	addDateHeader(String name, long date)
+The default behavior of this method is to call addDateHeader(String name, long date) on the wrapped response object.
+void	addHeader(String name, String value)
+The default behavior of this method is to return addHeader(String name, String value) on the wrapped response object.
+void	addIntHeader(String name, int value)
+The default behavior of this method is to call addIntHeader(String name, int value) on the wrapped response object.
+boolean	containsHeader(String name)
+The default behavior of this method is to call containsHeader(String name) on the wrapped response object.
+String	encodeRedirectUrl(String url)
+Deprecated. 
+As of version 2.1, use encodeRedirectURL(String url) instead
+String	encodeRedirectURL(String url)
+The default behavior of this method is to return encodeRedirectURL(String url) on the wrapped response object.
+String	encodeUrl(String url)
+Deprecated. 
+As of version 2.1, use encodeURL(String url) instead
+String	encodeURL(String url)
+The default behavior of this method is to call encodeURL(String url) on the wrapped response object.
+String	getHeader(String name)
+The default behaviour of this method is to call HttpServletResponse.getHeader(java.lang.String) on the wrapped response object.
+Collection<String>	getHeaderNames()
+The default behaviour of this method is to call HttpServletResponse.getHeaderNames() on the wrapped response object.
+Collection<String>	getHeaders(String name)
+The default behaviour of this method is to call HttpServletResponse.getHeaders(java.lang.String) on the wrapped response object.
+int	getStatus()
+The default behaviour of this method is to call HttpServletResponse.getStatus() on the wrapped response object.
+void	sendError(int sc)
+The default behavior of this method is to call sendError(int sc) on the wrapped response object.
+void	sendError(int sc, String msg)
+The default behavior of this method is to call sendError(int sc, String msg) on the wrapped response object.
+void	sendRedirect(String location)
+The default behavior of this method is to return sendRedirect(String location) on the wrapped response object.
+void	setDateHeader(String name, long date)
+The default behavior of this method is to call setDateHeader(String name, long date) on the wrapped response object.
+void	setHeader(String name, String value)
+The default behavior of this method is to return setHeader(String name, String value) on the wrapped response object.
+void	setIntHeader(String name, int value)
+The default behavior of this method is to call setIntHeader(String name, int value) on the wrapped response object.
+void	setStatus(int sc)
+The default behavior of this method is to call setStatus(int sc) on the wrapped response object.
+void	setStatus(int sc, String sm)
+Deprecated. 
+As of version 2.1, due to ambiguous meaning of the message parameter. To set a status code use setStatus(int), to send an error with a description use sendError(int, String)
