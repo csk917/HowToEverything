@@ -1,0 +1,28 @@
+﻿
+org.springframework.web.servlet
+Interface HandlerInterceptor
+
+설명
+Workflow interface that allows for customized handler execution chains. 
+Applications can register any number of existing or custom interceptors for certain 
+groups of handlers, to add common preprocessing behavior without needing to modify each
+ handler implementation.
+
+request - current HTTP request
+
+response - current HTTP response
+
+handler - chosen handler to execute, for type and/or instance evaluation
+
+ 
+메소드
+
+default void	postHandle(HttpServletRequest request, HttpServletResponse response, java.lang.Object handler, ModelAndView modelAndView)
+Intercept the execution of a handler.
+
+default boolean	preHandle(HttpServletRequest request, HttpServletResponse response, java.lang.Object handler)
+Intercept the execution of a handler.
+
+default void	afterCompletion(HttpServletRequest request, HttpServletResponse response, java.lang.Object handler, java.lang.Exception ex)
+Callback after completion of request processing, that is, after rendering the view.
+
