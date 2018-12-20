@@ -1,0 +1,74 @@
+﻿
+
+챌린지 (매번 새로운 SpringMVC 프로젝트 생성)
+==========
+Hello MVC
+
+SpringMVC 로 Hello World 출력
+
+0. 세팅
+-web.xml
+-root-context.xml, applicationServlet.xml 
+
+1. MVC 생성
+<복붙 불가>
+-View.jsp 뷰
+-HelloController.java 컨트롤러에서 Hello 모델/빈 객체로 Hello 꺼내오기.
+-Hello.java 모델. 클라이언트 View.jsp에서 입력한 커멘드 저장.
+
+
+==========
+Chap 07 회원가입 목록 출력
+
+0. 세팅
+-web.xml 로 DispatcherServlet-HandlerMapping+HandlerAdapter, CharacterEncodingFilter
+등록
+-ApplicationServlet으로 HandlerMapping 자동화, viewResolver 생성 <옵션-root-context, applicationServlet 분리>
+
+1. 정보 담을 빈 생성
+-MemberInfo, Address 빈 생성 (회원가입에 사용할 빈 객체)
+-MemberInfo-id, name, email, password, Address
+	Address-address1, address2, zipcode
+
+2. 클라이언트 요청
+-member/members.jsp 작성 (회원 목록 요청)
+	-memberInfo 커맨드에 등록되어야 할 정보
+		id, name, email, password, address, zipcode
+
+3. Controller
+-MemberController 클래스 생성, MemberServicce 타입 memberService 객체 생성
+
+4. Service
+MemberService 초기화시 정보 담는 생성자 등록
+	-HashMap 생성. 타입은 String-memberId key, MemberInfo를 받게 설정. memberMap 객체에 저장
+	-초기화시 memberMap에 회원 정보 담는 생성자 등록
+	-getMember() 메소드 작성. 매개변수 받기 X, Return 타입 List<MemberInfo>
+
+5. 호스트 응답
+-모델에 회원정보 전부 담기. members필드명 사용.
+-return "클라이언트에서 요청 받은 회원 목록 경로"
+
+===========
+Chap 07 이벤트 목록 출력
+
+위와 동일한 작업으로 이벤트 목록만 출력하는 프로젝트 작성 받을 데이터 타입 -id, name, type
+
+===========
+PET 프로젝트에서 Notice 목록 출력
+
+주의: 
+-Model 아닌 ModelAndView 사용함
+-페이지 설정 및 검색 설정은 제거
+
+===========
+
+월
+-기본 리스트 출력 연습
+화
+-기본 등록/쓰기 연습
+수
+-기본 수정/삭제 연습
+목
+-Validation 추가 연습
+금
+-부가기능 - 날짜, 검색, 세션, 쿠키
