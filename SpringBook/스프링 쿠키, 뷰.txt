@@ -1,0 +1,34 @@
+﻿@CookieValue("auth")- auth라는 이름으로 쿠키가 전송되면 받아서
+쿠키를 생성한다.
+
+return "redirect/main" - redirect가능
+
+값 검증=유효성 검증 (올바른 값이 입력되었는지)
+	-Validator 메소드 사용 >> 	
+
+ValidationUtils.rejectIfEmptyOrWhitespace
+	-BindingResult(유효성 검증 결과) 따로 감싸기 필수
+	-객체 생성 아닌 빈 설정으로 하고나서 @Autowired로 가져와 쓸 수 있
+
+다.
+	-Errors 인터페이스
+	-에러 메시지를 2개 이상 등록도 가능하다 ***
+	-if문으로 설정  ||   validate() 메소드 사용
+	-rejectIfEmpty() 오버로딩 된 메소드. 다형성 매개변수
+	-ResourceBundleMessageSource - 에러 메시지 property에 등록
+	-에러 코드 우선순위 설정 가능 {1}
+
+출력(view)
+	-<form:form commandName="loginCommand"> >> 에서 에러가 발생하면
+	-<form:errors element/path="div"/"email"/> div를 감싸서
+
+path >> 자바빈의 이름을 다 거쳐 설정. 
+	-@Valid Annotation 유효성 검증 >> @InitBinder와 연동
+	-어떤 validator 사용을 하는지. 
+	
+Global Validator
+	-모든 커맨드 객체를 검증 가능
+	<mvc:annotation-driven validator="validator"/>
+	<bean id="validator" class="custom.CommonValidator"/>
+	-연결 NotEmptry.JavaBeanName.VarName
+
