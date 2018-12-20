@@ -24,6 +24,7 @@ Chap 07 회원가입 목록 출력
 -web.xml 로 DispatcherServlet-HandlerMapping+HandlerAdapter, CharacterEncodingFilter
 등록
 -ApplicationServlet으로 HandlerMapping 자동화, viewResolver 생성 <옵션-root-context, applicationServlet 분리>
+-pom.xml에서 필요한 라이브러리 가져오기 (address)
 
 1. 정보 담을 빈 생성
 -MemberInfo, Address 빈 생성 (회원가입에 사용할 빈 객체)
@@ -39,7 +40,7 @@ Chap 07 회원가입 목록 출력
 -MemberController 클래스 생성, MemberServicce 타입 memberService 객체 생성
 
 4. Service
-MemberService 초기화시 정보 담는 생성자 등록
+MemberService 초기화시 정보 담는 생성자 등록 <Interface 생성!>
 	-HashMap 생성. 타입은 String-memberId key, MemberInfo를 받게 설정. memberMap 객체에 저장
 	-초기화시 memberMap에 회원 정보 담는 생성자 등록
 	-getMember() 메소드 작성. 매개변수 받기 X, Return 타입 List<MemberInfo>
@@ -49,7 +50,7 @@ MemberService 초기화시 정보 담는 생성자 등록
 -return "클라이언트에서 요청 받은 회원 목록 경로"
 
 ===========
-Chap 07 이벤트 목록 출력
+Chap 07 이벤트 목록 출력 
 
 위와 동일한 작업으로 이벤트 목록만 출력하는 프로젝트 작성 받을 데이터 타입 -id, name, type
 
