@@ -128,3 +128,5 @@ life-cycle 관리 역시 컨테이너에 맡겨버리는 것입니다.
 내가 필요할때만 @autowired, @inject 등으로 instance를 컨테이너로부터 주입받아서 사용하는거죠.
 
 http://www.mimul.com/pebble/default/2018/03/30/1522386129211.html
+-
+http://debugdaldal.tistory.com/174
