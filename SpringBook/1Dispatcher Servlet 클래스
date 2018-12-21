@@ -29,6 +29,15 @@ DispatcherServlet으로 돌아오면 결과를 보여줄 View를 ViewResolver가
 커맨드 객체- 클래스 이름을 사용해서 (소문자로) 모델에 접근하게 해준다.
 
 @(Requested)ModelAttribute - 파라미터를 전담 모델에 담아서 사용하는 기능. @RequestParam에서는 각각의 파람 request 가져와 쓴다.
+커멘드 객체는 클래스 이름을 이용해서 모델에 접근하는데 대신에 다른 이름을 사용하고 싶으면 커멘드 객체 좌측에 @ModelAttribute("사용할 이름") 
+지정하면 된다. 
+    두 가지 기능
+    -커맨드 객체 이름 지정
+    -에노테이션을 이용한 공통 모델 처리- 사용하는 데이터 설정. 
+        -모델에 값이 있으면 그걸 받아서 메소드 사용시 파람으로 전달
+        -값이 없으면 모델 객체를 인스턴스화해서 빈 공간 생성하기
+    사용 방법 ???
+    
 
 @RequestParam just populates stand-alone variables (which may of course be fields in a @ModelAttribute class). 
 These variables will be thrown away when the Controller is done, unless they have been fed into the model.
