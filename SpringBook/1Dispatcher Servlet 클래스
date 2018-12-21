@@ -1,0 +1,176 @@
+요약:
+
+Dispatcher Servlet- 스프링 설정을 전부 가져온 컨테이너 만들고 어떤 확장자를 처리할지 정하고
+엔코딩하다. 
+
+ViewResolver- 뷰를 사용할 방법과 어떤 뷰와 연결할지 정한다. 
+
+스프링 MVC 흐름- 브라우저가 요청하면 DispatcherServlet이 받아서 HandlerMapper 가 
+URL과 컨트롤러를 매칭하고 HandlerAdapter가 컨트롤러의 메소드를 실행시키고 메소드가 JDBC를 통해 DB에서 얻은 결과를 Model에 담아서
+DispatcherServlet으로 돌아오면 결과를 보여줄 View를 ViewResolver가 찾아서 브라우저에 응답!
+
+<context:component-scan/> >> 해당 패키지 위치에 있는 클래스(들)로 빈 인스턴스 만들기
+<mvc:annotation-driven/> >> @ Annotation 사용에 필요한 의존 클래스 설정 자동화 (의존성 주입)
+<context:annotation-config/> >> annotation 사용에 필요한 클래스(빈) 등록 생략
+<mvc:default-servlet-handler/> 모든 servlet 요청 처리를 url pattern을 "/"로 정한다. 
+
+의존성 주입- 컨테이너 인스턴스 자동 생성해서 필요할 때 다른 클래스와 자동 사용(주입/조립)하여 클래스에서 매번 인스턴스 생성 불필요. 
+
+@RequestMapping 메서드 - URL로 클라리어언트 요청 종류(URL/메소드 타입/컨텐츠 타입)를 구분해서 받아 메서드로 처리하고 처리 결과를 뷰에 전달한다.
+(String return시 뷰 이름 리턴)
+
+@Model 클래스- addAttribute() 메서드를 사용해서 첫 번째 파라미터로 모델 데이터의 이름과 두 번째로 파라미터 값을 받아 return 경로로 자기 자신을
+전달한다
+
+@PathVariable로 URL경로로 변수 값을 메소드 파라미터로 받을 수 있다.
+
+@RequestParam("") == request.getParameter("")와 같으면서 파라미터 타입에 맞게 변환해주고 또 required=false로 파람을 못받을시 오류가 없게 한다.
+
+커맨드 객체- 클래스 이름을 사용해서 (소문자로) 모델에 접근하게 해준다.
+
+?? @ModelAttribute - 클래스 이름도 길어서 다른 이름으로 설정할 수 있다. @ModelAttribute("") 클래스 이름 
+
+=========================
+
+① DispatcherSevlet 은 모든 연결을 담당하며, 웹 브라우저에서 요청이 들어오면 
+
+② 그 요청을 처리하기 위해 HandlerMapping 객체에게 컨트롤러 검색을 요청한다.
+
+    HandlerMapping은 클라이언트의 요청 경로를 이용해서 이를 처리할 컨트롤러 객체를 찾아서 DispatcherServlet 에 리턴한다.  
+
+③  DispatcherServlet 은 @Controller 어노테이션을 이용해서 구현한 컨트롤러, 스프링 2.5까지 사용됐던 Controller 인터페이스를 구현한 
+
+    컨트롤러, 특수 목적으로 사용되는 HttpRequestHandler 인터페이스를 구현한 클래스를 동일한 방식으로 실행하고 처리하기 위해
+
+    HandlerAdapter 객체에게 요청 처리를 위임한다.
+
+④ HandlerAdapter 객체는 컨트롤러의 알맞은 메소드를 호출해서 요청을 처리하고,
+
+⑤ 반환 받은 결과를 
+
+⑥ ModelAndView 객체에 담아서 DispatcherServlet 에 리턴한다.
+
+⑦ ModelAndView 객체를 반환 받은 DispatcherServlet 은 ViewResolver 객체를 이용해서 결과를 보여줄 뷰를 검색한다.
+
+    ViewResolver 객체는 ModelAndView 객체에 담긴 뷰 이름을 이용해서 View 객체를 찾거나 생성해서 리턴한다.
+
+    ViewResolver 는 매번 새로운 View 객체를 생성해서 DispatcherServlet에 리턴한다.
+
+⑧ DispatcherServlet 은 ViewResolver 가 리턴한 View 객체에게 응답 결과 생성을 요청한다.
+
+⑨ JSP를 사용하는 경우, View 객체는 JSP를 실행함으로서 브라우저에게 전송할 응답 결과를 생성한다.
+
+    ModelAndView 의 Model 객체에 담겨 있는 데이터가 응답 결과에 필요하면 Model 에서 데이터를 꺼내 JSP 에서 사용할 수 있다.
+
+
+
+출처: http://tinkerbellbass.tistory.com/40 [Welcome to NeverLand]
+
+이 요소는 스프링 2.5 버전에 소개되어졌으며 , 만약 그 이전 버전의 스프링으로 작업하려면 , 모든 빈들은 수동적으로 XML 파일에 설정되어야 했었다.  자바빈에 대해 어노테이션 지원은 없었다.  이것은 많은 XML 코딩을 초래했으며 ,유지보수에서도 심각한 문제가 있었다. context:component-scan 요소는 XML 파일안의 모든 빈들의 선언을 제거했다. 
+
+아래는 스프링 설정파일에서 선언된 모습이다.
+
+
+
+======================
+요약:
+<context:component-scan/> >> 해당 패키지 위치에 있는 클래스(들)로 빈 인스턴스 만들기
+<mvc:annotation-driven/> >> @ Annotation 사용에 필요한 의존 클래스 설정 자동화 (의존성 주입)
+<context:annotation-config/> >> annotation 사용에 필요한 클래스(빈) 등록 생략
+
+
+1 <context:component-scan/>
+1
+<context:component-scan base-package="org.controller"/>
+
+위의 선언은 특정 패키지(위에서는 org.controller) 안의 클래스들을 스캔하고 , 빈 인스턴스를 생성한다. 
+
+아래와 같은 정확한 어노테이션이 존재해야지 빈을 생성할수있다. 
+
+@Component
+@Repository
+@Service
+@Controller
+
+이것의  장점중 하나는   @Autowired and @Qualifier 어노테이션을 이해한다는것인데 
+만약 당신이 <context:component-scan> 를 선언했다면 <context:annotation-config> 를 
+선언할필요가 없다는것이다.
+
+<context:component-scan /> is, as the name implies, for component scanning.
+It by default scans for all beans with the @Component annotation (or "sub"annotations like @Controller, @Service etc.).
+It will only register instances of those classes in the application context as beans. That is all.
+=======================
+2. <mvc:annotation-driven/>
+
+mvc:annotation-driven 는 스프링 MVC 컴포넌트들을 그것의 디폴트 설정을 가지고  활성화 하기위해 
+사용된다. 만약  context:component-scan 을 XML 파일에서 빈을 생성하기위해 사용하면서 mvc:annotation-driven 를  포함시키지 않아도 
+MVC 어플리케이션은 작동할것이다. 그러나  mvc:annotation-driven 은 특별한
+일들을 하는데 이 태그는 당신의 @Controllers 에게 요청을 전파하기위해  요구되는  HandlerMapping 와  HandlerAdapter 를 등록한다.  
+게다가 , 클래스패스상에 존재하는것에 기반한 아래와 같은 어떤 
+디폴트 작업을 적용한다.  
+
+***
+<mvc:annotation-driven/> for bootstrapping Spring MVC. Defines Spring dependencies (ex) @Repository, @Controller) without having
+to specify elements in XML or implement interface or extend base class in this case extend JpaDaoSupport, implement Controller interface.
+Automatic defining of spring dependency so that @Controller tells spring that this class has methods that will handle
+Http requests.
+But this does not scan and detect these components without request mapping - that is made by registering beans with xml or
+<context:component-scan/>.
+mvc:annotationdriven is needed to bind incoming requests 
+
+When spring starts up it reads its XML configuration file and looks for  <bean elements within it if it sees something like 
+<bean class="com.example.Foo" /> and Foo was marked up with @Controller it knows that the class is a controller and treats it as such. 
+By default, Spring assumes that all the classes it should manage are explicitly defined in the beans.XML file.
+=======================
+3. <context:annotation-config/>
+context:annotation-config 는 어플리케이션 컨텍스트안에 이미 등록된 빈들의 어노테이션을 활성화를 위해 사용된다. 
+(그것들이 XML 으로 설정됬는지 혹은 패키지스캐닝을 통한건지는 중요하지 않다) 
+
+그 의미는 이미 스프링 컨텍스트에 의해 생성되어 저장된  빈들에 대해서  @Autowired and @Qualifier 
+
+어노테이션을 해석할거란 얘기다.
+
+context:component-scan   또한 같은일을 할수있는데, 추가적으로 어플리케이션 컨텍스트에 빈을 등록하기위한 패키지들을 스캔한다. 
+context:annotation-config 은 빈을 등록하기위해 검색할수없다. 
+
+<context:annotation-config /> 태그를 설정하면 아래의 기능을 각각 설정하는 수고를 덜게 해준다. 
+
+- RequiredAnnotationBeanPostProcessor : @Required 어노테이션 처리
+
+- AutowiredAnnotationBeanPostProcessor : @Autowired 어노테이션 처리
+
+   <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>		
+
+- CommonAnnotationBeanPostProcessor : @Resource, @PostConstruct, @PreDestroy 어노테이션 처리
+
+- ConfigurationClassPostProcessor : @Configuration 어노테이션 처리
+
+============================
+
+https://stackoverflow.com/questions/41577234/why-does-spring-mvc-respond-with-a-404-and-report-no-mapping-found-for-http-req
+
+---------------------------
+의존성 주입
+
+요약: 컨테이너 인스턴스 자동 생성해서 필요할 때 다른 클래스와 자동 사용(주입). 클래스에서 매번 인스턴스 생성 불필요. 
+
+
+---
+일반적으로 class의 instance를 다음과 같이 생성해서 사용합니다.
+
+MyClass myClass = new MyClass();
+그런데 instance 생성 비용이 크다거나, 여러군데서 사용한다거나, 굳이 이걸 일일이 생성해서 사용해야 되나?
+
+등등의 이유가 있을 수 있습니다. 이미 겪어보셨을 수도 있지만요 ㅎ
+
+
+
+그럴 때 instance의 생성을 컨테이너(보통 spring framework나 기타등등)에 맡겨서 일괄적으로 진행한 후에
+
+life-cycle 관리 역시 컨테이너에 맡겨버리는 것입니다.
+
+내가 필요할때만 @autowired, @inject 등으로 instance를 컨테이너로부터 주입받아서 사용하는거죠.
+
+http://www.mimul.com/pebble/default/2018/03/30/1522386129211.html
+-
+http://debugdaldal.tistory.com/174
