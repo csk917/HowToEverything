@@ -28,8 +28,13 @@ DispatcherServlet으로 돌아오면 결과를 보여줄 View를 ViewResolver가
 
 커맨드 객체- 클래스 이름을 사용해서 (소문자로) 모델에 접근하게 해준다.
 
-?? @ModelAttribute - 클래스 이름도 길어서 다른 이름으로 설정할 수 있다. @ModelAttribute("") 클래스 이름 
+@ModelAttribute - 파라미터를 전담 모델에 담아서 사용하는 기능. @RequestParam에서는 각각의 파람 request 가져와 쓴다.
 
+@RequestParam just populates stand-alone variables (which may of course be fields in a @ModelAttribute class). 
+These variables will be thrown away when the Controller is done, unless they have been fed into the model.
+
+https://stackoverflow.com/questions/29370581/spring-mvc-please-explain-difference-between-requestparam-and-modelattribute
+http://egloos.zum.com/springmvc/v/535572
 =========================
 
 ① DispatcherSevlet 은 모든 연결을 담당하며, 웹 브라우저에서 요청이 들어오면 
