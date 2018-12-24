@@ -140,9 +140,11 @@ For a complete list go to the Http Messages Reference
 	}
 	function load(url) {
 		httpRequest = getXMLHttpRequest();
-		httpRequest.onreadystatechange = viewMessage;
+		httpRequest.onreadystatechange = viewMessage; //요청에 대한 응답을 받는 onreadystatechange
 		httpRequest.open("GET", url, true); //GET 방식으로 받아오는 url에 해당되는 걸로 요청하는 것. 
-		httpRequest.send(null); //데이터 있으면 보낸다. 
+		//open(전달방식, URL주소, 동기여부); 서버로 보낸 AJAX 요청 형식
+		httpRequest.send(null); // (open메소드로 요청 열고 주소와, GET 받아서 설정 후 요청한 서버로 데이터가 있으면 보낸다). 
+			//Ajax 요청을 서버로 전달
 	}
 	
 	//서버측에서 보내주면 처리하기. 
@@ -253,7 +255,7 @@ function sendRequest(url, params, callback, method) {
 </html>
 
 [hello.jsp]
-<%@ page contentType="text/plain; charset=euc-kr" %>
+<%@ page contentType="text/plain; charset=euc-kr"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String name = request.getParameter("name"); //JSP 결과는 text파일 클라이언트에 text형태로 보낸다. 
