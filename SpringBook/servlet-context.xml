@@ -19,18 +19,25 @@ servlet-context.xml
 6            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
 
-1 You need the main bean namespace since you are using XML to define your bean definitions.
-
+1 You need the main bean namespace since you are using XML to define your bean definitions. 
+<XML BEAN>
+    
 2 You don't need the aop namespace unless you are doing any AOP operations via the spring-aop dependency.
+<AOP 쓸때만>
 
-3 You need the context namespace since you are using it to define <context:annotation-config />
+3 You need the context namespace since you are using it to define <context:annotation-config /> 
+ <context:annotation-config />   
 
 4 You don't need the jee namespace unless you are planning to do any Java EE operations like jndi-lookup
+ <jndi-lookup 사용시>
 
 5 You don't need the oxm namespace unless you are doing xml marshalling/unmarshalling operations via the spring-oxm dependency.
+ <xml marshalling/unmarshalling>
 
 6 You don't need the tx namespace unless you are introducing transactional management via the  spring-tx dependency.
+<transactional management 트렌젝션>
 
 7 You don't need the p namespace unless you are planning to inline setter injection in your bean definitions.
+<@inject>
 
 
