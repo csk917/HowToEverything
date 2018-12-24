@@ -31,5 +31,47 @@
       
     JSON-Javascript Object Notation- 속성-값으로 이루어진 데이터 오브젝트를 전달한다. 
       
-      
+업로드-MultipartResolver
+    CommonsMultipartResolver 빈 등록
+    web.xml에 max-file-size, max-request-size, file-size-threshold설정 필요.
+    multipartFile.getBytes() - 파일 데이터 구함.
+    
+업로드 파일 접근 방식
+  -@RequestParam
+  -MultipartHttpServletRequest
+  -자바빈 커멘드 객체에 넣을 수 있다. 
+  
+웹 소켓
+  웹 서버간 양방향 통신을 위한 표준 HTTP프로토컬 기반
+  pom- spring-websocket dependency
+  <websocket:handler> 인터페이스 필요
+  
+ 설명
+ TextWebSocketHandler-Text로 주고 받기
+  afterConnectionEstablished- 웹소켓 클라이언트가 특정 엔드포인트 연결시
+  handleTextMessage-처리.
+  .xml- websocket, handler.
+  
+  HTML
+   -new WebSocket("웹 소켓 요청 경로")
+   onMessage로 메시지 받아 실행.
+   입력 값을 서버에 전송 wSocket.send()
+   
+   -스프링 웹 소켓, 쪽지---> 검색!
+   
+   유저 설정
+    WebSocketSession
+    -->맵에 세션 ID, 세션. 
+    
+    웹 소켓 지원 않을 시
+    SockJS 사용- 라이브러리 필요
+    
+    
+    
+    
+   
+   
+  
+  
+  
       
