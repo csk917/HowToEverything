@@ -1,0 +1,41 @@
+2.2 JDBC 기반 트랜젝션 관리자 설정.
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+  
+  /*
+  dataSource- JDBC 연동 후 DataSourceTransactionManager 트랜젝션 관리자 실행. 
+  Datasource로 부터 connection가져온 후  Connection- commit(), rollback()등을 실행함. 
+  
+  */
+  
+2.3 TransactionTemplate을 이용한 트랜젝션
+
+public class PlaceOrderServiceImpl implements PlaceOrderService {
+...
+
+    @Override
+      public PurchaseOrderResult order(PurchaseOrderRequest orderRequest)
+          throws ItemNotFoundException {
+        Item item = itemDao.findById(orderRequest.getItemId());
+        if (item == null)
+          throw new ItemNotFoundException(orderRequest.getItemId());
+
+        PaymentInfo paymentInfo = new PaymentInfo(item.getPrice());
+        paymentInfoDao.insert(paymentInfo);
+
+        PurchaseOrder order = new PurchaseOrder(item.getId(), orderRequest
+            .getAddress(), paymentInfo.getId());
+        purchaseOrderDao.insert(order);
+        return new PurchaseOrderResult(item, paymentInfo, order);
+      }
+      
+   /*
+   상품 구매 서비스- PlaceOrderService 인터페이스로 부터 메소드 order로 (orderRequest 주문 요청 파람을 받아서)
+   findById(아이템 ID로 요청한 항목 name ItemId를 받아서 쿼리를 돌린다. 
+   
+   
+   */
+
