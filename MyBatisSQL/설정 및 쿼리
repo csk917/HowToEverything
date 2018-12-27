@@ -1,0 +1,184 @@
+DB 작업 자바에서 쓰고 싶으면 @Repository 사용.
+
+JPA-Java Persistence API- 자바 ORM 표준 사용 (사용 안함)
+
+================
+pom.xml - mybatis, oracle 필수
+	<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.3</version>
+		</dependency>
+    
+    <dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.4.0</version>
+		</dependency>  
+    
+    
+
+servlet.xml
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:/mybatis/itemdao.xml</value>
+				<value>classpath:/mybatis/purchaseorderdao.xml</value>
+			</list>
+		</property>
+		<property name="typeAliasesPackage" value="net.madvirus.spring4.chap13.store.model" />
+<!-- 		<property name="typeAliases"> -->
+<!-- 			<list> -->
+<!-- 				<value>net.madvirus.spring4.chap13.store.model.PurchaseOrder</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+  
+ ================
+ 
+1 설정 단계
+  -dependency 추가 
+  -sqlSessionFactory 클래스 모듈 빈- DB와 MyBatis 연동을 위해 필요.
+  -sqlSessionTemplate
+   >>typeAliasPackage- typeAliasesPackage 속성을 주면 이 하위 디렉터리의 클래스들은 모두 myBatis Mapper XML에서 parameter type 
+      이나 result Type으로 사용할 수 있다.
+      
+      
+     typeAlias 프로퍼티는 매퍼 xml파일에서 완전한 클래스 이름 대신 별칭 사용할 때 . (아래와 같이) 
+================
+purchaseorderdao.xml
+<mapper namespace="net.madvirus.spring4.chap13.store.dao.PurchaseOrderDao">
+	
+	<insert id="save" parameterType="PurchaseOrder" useGeneratedKeys="true" keyProperty="id"> //parameterType
+		insert PURCHASE_ORDER (ITEM_ID, PAYMENT_INFO_ID, ADDRESS)
+		values (#{itemId}, #{paymentInfoId}, #{address})
+	</insert>
+	
+</mapper>
+
+-->
+
+PurchaseOrder.java
+@Alias("PurchaseOrder")
+
+==================
+
+트랜젝션 관련 작업 .
+<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+  
+===============
+
+세션 탬플릿을 DAO 가 사용하게끔 DI 설정을 스프링에서 해준다
+<bean id="itemDao"
+		class="net.madvirus.spring4.chap13.store.dao.MyBatisItemDao">
+		<property name="sqlSession" ref="sqlSessionTemplate" />
+	</bean>
+  
+===============
+
+-세션 탬프릿 사용- 인터페이스 상속 
+
+@Repository
+public class MyBatisItemDao implements ItemDao {
+
+	private SqlSession sqlSession;
+
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	@Override
+	public Item findById(Integer itemId) {
+		Item item = (Item) sqlSession.selectOne(
+				"net.madvirus.spring4.chap13.store.dao.ItemDao.findById",
+				itemId);
+		return item;
+	}
+}
+=========
+
+-sqlSessionDaoSupport를 사용하면 session 얻어오는 걸 getSqlSession으로 처리함
+
+public class MyBatisItemDao2 extends SqlSessionDaoSupport implements ItemDao {
+
+	@Override
+	public Item findById(Integer itemId) {
+		Item item = (Item) getSqlSession().selectOne(
+				"net.madvirus.spring4.chap13.store.dao.ItemDao.findById",
+				itemId);
+		return item;
+	}
+}
+=================
+
+-mapperFactoryBean하고 세션 factory 연결해서 이렇게 세팅된 DAO를 서비스에서도 사용 가능. 
+-인터페이스를 자바에 정의하고 xml로 dao를 설정할 수 있다. 
+
+.java
+package com.test.mybatis;
+
+import java.util.ArrayList;
+
+import com.test.mybatis.Member;
+
+public interface MemberMapper {
+	ArrayList<Member> getMembers();
+	void insertMember(Member member);
+	void updateMember(String name);
+	void deleteMember(String name);
+}
+
+.xml
+
+<mapper namespace="com.test.mybatis.MemberMapper"> //자바빈과 인터페이스 맵핑. 
+
+	<!-- id의 경우에는 Mapper.java에 동일하게 사용해야된다. -->
+	<select id="getMembers" resultMap="MemberResultMap">
+		SELECT * FROM tab_mybatis
+	</select>
+	
+	<!-- parameterType 에는 구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래명이나 별칭이 들어간다  -->
+	<insert id="insertMember" parameterType="com.test.mybatis.Member" >
+		INSERT INTO tab_mybatis values(#{_name},#{_email},#{_phone})
+	</insert>
+  
+  ==================================
+  
+  메소드 정의를 @Insert annotation으로도 가능하다. 
+	
+  스캔을 이용한 매퍼 검색도 가능
+
+	<mybatis:scan base-package="net.madvirus.spring4.chap13.store.dao" />
+  
+  ==============================
+  
+  세션 탬플릿
+  수정 삭제시 전부 update()
+  
+ typealiaspackage- 빈 설정을 한 패키지 전부 등록할 수 있다. 
+
+=================================
+create table tab_mybatis(
+	name varchar2(10) primary key,
+	email varchar2(100),
+	phone varchar2(11)
+);
+
+insert into tab_mybatis 
+values ('호랑이','thosit@naee.com','01044472343');
+
+insert into tab_mybatis 
+values ('말코임','qewdq@naee.com','1234654');
+
+insert into tab_mybatis 
+values ('커피임','thosit@naee.com','01044472343');
+
+>> 테이블 생성 및 값 입력. 
