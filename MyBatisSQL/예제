@@ -1,0 +1,34 @@
+@Controller
+public class MybatisController {
+	
+	// 
+	@Autowired
+	private MemberDAOService memberDAOService;
+  
+-Repository @Service @Controller @Component 등록해야 component-scan에서 빈으로 자동 등록
+-그리고 sqlSession 객체를 DI관계 설정으로 사용하려면 @Autowired하기 
+
+  ===============================
+  
+  @Override
+	public ArrayList<Member> getMembers() {
+		ArrayList<Member> result = new ArrayList<Member>();
+		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+		//getMembers()의 메소드명과 mapper.xml과 id는 동일해야한다. mapper.xml에 id="getMembers"를 찾아 실행 결과를 돌려준다. 
+		result = memberMapper.getMembers();
+		
+		return result;
+	}
+  
+   -인터페이스와 연동 MemberMapper
+  
+  ===============================
+  
+  @Override
+	public void insertMember(Member member) {
+		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+		memberMapper.insertMember(member);
+	}
+  
+  -맴버 객체 뽑아내서 메소드를 Mybatis로 update해서 처리하기
+  ==============================
