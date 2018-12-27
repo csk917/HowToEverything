@@ -2,21 +2,23 @@ DB 작업 자바에서 쓰고 싶으면 @Repository 사용.
 
 JPA-Java Persistence API- 자바 ORM 표준 사용 (사용 안함)
 
+DAO- Data Access Object
 ================
-pom.xml - mybatis, oracle 필수
-	<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.3</version>
-		</dependency>
-    
-    <dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc14</artifactId>
-			<version>10.2.0.4.0</version>
-		</dependency>  
-    
-    
+pom.xml
+
+<dependency>
+	<groupId>org.mybatis</groupId>
+	<artifactId>mybatis</artifactId>
+	<version>3.2.3</version>
+</dependency>
+
+<dependency>
+	<groupId>com.oracle</groupId>
+	<artifactId>ojdbc14</artifactId>
+	<version>10.2.0.4.0</version>
+</dependency>  
+
+-pom.xml - mybatis, oracle 필수    
 
 servlet.xml
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -47,9 +49,9 @@ servlet.xml
   -sqlSessionTemplate
    >>typeAliasPackage- typeAliasesPackage 속성을 주면 이 하위 디렉터리의 클래스들은 모두 myBatis Mapper XML에서 parameter type 
       이나 result Type으로 사용할 수 있다.
-      
-      
+   
      typeAlias 프로퍼티는 매퍼 xml파일에서 완전한 클래스 이름 대신 별칭 사용할 때 . (아래와 같이) 
+     
 ================
 purchaseorderdao.xml
 <mapper namespace="net.madvirus.spring4.chap13.store.dao.PurchaseOrderDao">
@@ -69,10 +71,11 @@ PurchaseOrder.java
 ==================
 
 트랜젝션 관련 작업 .
+
 <bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
-	</bean>
+</bean>
   
 ===============
 
@@ -80,7 +83,7 @@ PurchaseOrder.java
 <bean id="itemDao"
 		class="net.madvirus.spring4.chap13.store.dao.MyBatisItemDao">
 		<property name="sqlSession" ref="sqlSessionTemplate" />
-	</bean>
+</bean>
   
 ===============
 
