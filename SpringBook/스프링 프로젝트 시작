@@ -1,0 +1,5 @@
+기능 구현은 다음과 같은 순서로 작성한다. 
+
+- Controller > Service > ServiceImpl > DAO > SQL(XML) > JSP
+
+출처: http://addio3305.tistory.com/72?category=772645 [흔한 개발자의 개발 노트]
