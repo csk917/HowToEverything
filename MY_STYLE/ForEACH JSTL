@@ -1,0 +1,52 @@
+//메타인지란 내가 얼마나 알고 있는지 인지-- 느낌 말고 결과론적으로 알 수 있는 것!!!
+
+
+[{key1 = lion, key2 = cat}] 
+
+[{key1 = apple, key2 = melon}]
+
+
+<c:forEach items="${modelData}" var="list">
+
+${list} <br/>
+
+</c:forEach>
+
+==================================
+
+<c:forEach items="${modelData}" var="list">
+
+<c:forEach items="${list}" var="map">
+
+${map} <br/>
+
+</c:forEach>
+
+</c:forEach>
+
+{key1 = lion, key2 = cat} 
+
+{key1 = apple, key2 = melon}
+
+=================================
+
+<c:forEach items="${modelData}" var="list">
+
+<c:forEach items="${list}" var="map">
+
+${map[key1]} <br/>
+
+</c:forEach>
+
+</c:forEach>
+
+================================
+
+<c:forEach items="${modelData}" var="list" varStatus="status">
+
+${status.count}<br/>
+
+</c:forEach>
+
+
+
