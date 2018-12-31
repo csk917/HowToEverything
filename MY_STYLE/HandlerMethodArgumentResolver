@@ -1,0 +1,13 @@
+설명 잘되어 있음
+http://millky.com/@origoni/post/1177
+
+interceptor가 컨트롤러 전 후 처리에 필요한 정보를 사용했다면
+argument resolver는 컨트롤러 실행 과정에서 필요한 정보를 사용한다. 
+
+http://addio3305.tistory.com/75?category=772645
+
+http://wonwoo.ml/index.php/post/1092
+
+http://javacan.tistory.com/entry/how-use-spring-mvc-custom-HandlerMethodArgumentResolver
+
+https://www.petrikainulainen.net/programming/spring-framework/spring-from-the-trenches-creating-a-custom-handlermethodargumentresolver/
