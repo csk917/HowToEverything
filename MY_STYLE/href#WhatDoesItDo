@@ -1,0 +1,4 @@
+#
+-해당 페이지에서 가리키는 무엇
+-그냥 a href="#"이면 해당 페이지 상단으로 이동
+-href="//site.com/#some-id     //id=some-id
