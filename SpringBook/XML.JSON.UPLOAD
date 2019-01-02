@@ -1,3 +1,12 @@
+
+업로드 필수 설정
+dependency commons-io, commons-fileupload 
+input file로 업로드 요청 + form에 multipart 데이터 넘기기 추가
+multipart httpservlet request- 로 파일 요청 받기 >> 서비스단에서 처리 컨트롤러 XX
+
+
+
+=============
 스프링 MVC는 XML/JSON 처리 방식 제공함. 
 -@RequestBody
   contenttype으로 몸체 데이터 형식을 지정한다 (이건 해더에서 설정)
