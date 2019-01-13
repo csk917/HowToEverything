@@ -6,7 +6,7 @@ AJAX에서 기본적으로 요청할 때 필요한 정보
 5 event- 언제 ajax request가 발동하는지 정한다.
 6 get-- 요청한 곳에서 어떤 값을 가져올지 정한다. 
 7 status-- 처리 상태를 확인한다. 
-8 responseText-- 실제 가져온 데이터-->로직으로 여러 대입을 거쳐서 출력하기. 
+8 responseText-- 실제 가져온 데이터-->로직으로 여러 대입을 거쳐서 innerHtml에 <특정한 id/class> 위치에 출력하기. 
 
 DOM
 open(method, url, async)	Specifies the type of request
