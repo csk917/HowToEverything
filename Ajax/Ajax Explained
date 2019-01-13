@@ -5,6 +5,7 @@ AJAX에서 기본적으로 요청할 때 필요한 정보
 4 URL- 파일 있는 위치를 정한다. 
 5 event- 언제 ajax request가 발동하는지 정한다.
 6 get-- 요청한 곳에서 어떤 값을 가져올지 정한다. 
+7 status-- 처리 상태를 확인한다. 
 
 DOM
 open(method, url, async)	Specifies the type of request
