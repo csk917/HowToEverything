@@ -1,3 +1,10 @@
+AJAX에서 기본적으로 요청할 때 필요한 정보
+1 header- encoding, type여부 정한다
+2 method- GET/POST 어떤 방식의 요청인지 정한다
+3 Async- 동기적인지 비동기적인지를 정한다
+4 URL- 파일 있는 위치를 정한다. 
+5 event- 언제 ajax request가 발동하는지 정한다.
+6 get-- 요청한 곳에서 어떤 값을 가져올지 정한다. 
 
 DOM
 open(method, url, async)	Specifies the type of request
