@@ -82,8 +82,27 @@ https://medium.com/@panicrooms0/%EC%B9%B4%EC%B9%B4%EC%98%A4-kakao-%EB%A1%9C%EA%B
  -데이터 생성,변경,소멸 
  -데이터 기록 (역사)
  
+ ======================
+ AJAX설명
+ $.ajax({
+            url: 요청이 보내지는 곳,
+            type: http요청 방식 get/post,
+            success: http 요청 성공의 경우 동작할 함수,
+            error: http 요청 실패의 경우 동작할 함수,
+            complete: http 요청 완료 후 동작할 함수,
+            data: 서버로 넘어갈 값,
+            dataType: data의 타입,
+            global: 전역 함수 여부 true/false,
+            async: 동기 여부 true/false
+        });
+  
+ ======================
  
+ 
+  
+ ======================
  CSS mouseover SCROLLING
+ 
  <script type="text/javascript">
 function tabtest(tmp_tab) {
 	var i = 0;
@@ -166,3 +185,6 @@ border:1px solid #e6e6e6;
 		</div>
 
 </div>
+
+ 
+ ======================
