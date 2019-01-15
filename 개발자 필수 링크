@@ -83,4 +83,86 @@ https://medium.com/@panicrooms0/%EC%B9%B4%EC%B9%B4%EC%98%A4-kakao-%EB%A1%9C%EA%B
  -데이터 기록 (역사)
  
  
- 
+ CSS mouseover SCROLLING
+ <script type="text/javascript">
+function tabtest(tmp_tab) {
+	var i = 0;
+	for(i=1;i<=3;i++) 
+		document.getElementById("tmp_tab_"+i).style.display = "none";
+	
+	document.getElementById(tmp_tab).style.display = "";
+}
+function tabtest2(tmp_tab) {
+	var i = 0;
+	for(i=1;i<=5;i++) 
+		document.getElementById("tmp_tabs_"+i).style.display = "none";
+	
+	document.getElementById(tmp_tab).style.display = "";
+}
+</script>
+
+<a href="#100" onmouseover="tabtest('tmp_tab_1');">인기수업</a>
+<a href="#100" onmouseover="tabtest('tmp_tab_2');">디자인툴</a>
+<a href="#100" onmouseover="tabtest('tmp_tab_3');">실무역량</a>
+<div id="tmp_tab_1" style="width:100px;height:100px;background:blue;">
+1
+</div>
+<div id="tmp_tab_2" style="width:100px;height:100px;background:yellow;display:none;">
+2
+</div>
+<div id="tmp_tab_3" style="width:100px;height:100px;background:green;display:none;">
+3
+</div>
+
+<style type="text/css">
+.tmp_tab_bg {
+width:1000px;
+margin:0 auto;
+position:absolute;
+}
+.tmp_a {
+background:#ffffff;
+top:20px;
+right:20px;
+width:100px;
+height:150px;
+position:absolute;
+overflow-y:scroll;
+}
+.tmp_a a{
+display:block;
+width:100%;
+height:45px;
+line-height:45px;
+border:1px solid #e6e6e6;
+}
+</style>
+
+<div style="overflow:hidden;position:relative;">
+
+	<div class="tmp_tab_bg">
+		<div class="tmp_a">
+			<a href="#100" onmouseover="tabtest2('tmp_tabs_1');">인기수업</a>
+			<a href="#100" onmouseover="tabtest2('tmp_tabs_2');">디자인툴</a>
+			<a href="#100" onmouseover="tabtest2('tmp_tabs_3');">실무역량</a>
+			<a href="#100" onmouseover="tabtest2('tmp_tabs_4');">실무역량</a>
+			<a href="#100" onmouseover="tabtest2('tmp_tabs_5');">실무역량</a>
+		</div>
+	</div>
+		<div id="tmp_tabs_1" style="width:100%;height:300px;background:url(./images/office_bk.jpg) no-repeat center center;background-size:cover;">
+		1
+		</div>
+		<div id="tmp_tabs_2" style="width:100%;height:300px;background:yellow;display:none;">
+		2
+		</div>
+		<div id="tmp_tabs_3" style="width:100%;height:300px;background:green;display:none;">
+		3
+		</div>
+		<div id="tmp_tabs_4" style="width:100%;height:300px;background:red;display:none;">
+		4
+		</div>
+		<div id="tmp_tabs_5" style="width:100%;height:300px;background:orange;display:none;">
+		5
+		</div>
+
+</div>
